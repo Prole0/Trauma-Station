@@ -144,7 +144,7 @@
       - tag: MechAirTank
         name: construction-graph-tag-exosuit-air-tank
         icon:
-          sprite: Objects/Specific/Mech/mecha_equipment.rsi
+          sprite: _Goobstation/Objects/Specific/Mech/mecha_equipment.rsi
           state: mecha_air_tank
 
       - tool: Anchoring
