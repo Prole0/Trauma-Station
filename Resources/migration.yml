@@ -1094,5 +1094,8 @@ UniqueLockerBlueshieldOfficerFilled: null
 AirlockBlueshieldOfficerCommandLocked: AirlockCentralCommandLocked
 AirlockBlueshieldOfficerCommandGlassLocked: AirlockCentralCommandGlassLocked
 
+# 2025-10-28
+DringKiraSpecial: DrinkOrangeLimeSodaGlass
+
 # Trauma - 2025-10-30
 DVSmartFridgeMedical: SmartFridgeMedical
