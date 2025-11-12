@@ -1,5 +1,5 @@
 Name: Traumalog
-Order: -2
+Order: -1
 Entries:
 - author: Durk
   changes:
@@ -602,3 +602,9 @@ Entries:
         halfway point to its goal.
   id: 66
   time: '2025-11-11T07:12:19.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Add
+      message: Added bugs from upstream.
+  id: 67
+  time: '2025-11-12T15:04:59.0000000+00:00'
