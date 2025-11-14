@@ -300,6 +300,26 @@
 
 
 - type: listing
+  id: UplinkEnergyCrossbow
+  name: uplink-energycrossbow-name
+  description: uplink-energycrossbow-desc
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 30 # Trauma
+  productEntity: WeaponEnergyCrossbow
+  cost:
+    Telecrystal: 50 # Trauma
+  categories:
+  - UplinkWeaponry
+  conditions:
+  #- !type:ListingLimitedStockCondition # Trauma
+  #  stock: 1
+  - !type:StoreWhitelistCondition # Trauma
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
   id: UplinkThrowingKnivesKit
   name: uplink-knives-kit-name
   description: uplink-knives-kit-desc
