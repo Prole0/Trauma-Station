@@ -1028,19 +1028,49 @@
     - state: idseniorengineer
 
 - type: entity
-  parent: ResearchIDCard
-  id: SeniorResearcherIDCard
-  name: senior researcher ID card
+  parent: [PassengerIDCard, BaseChameleon]
+  id: AgentIDCard
+  suffix: Agent
   components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: idseniorresearcher
+  - type: Access
+    tags:
+    - Maintenance
+    - SyndicateAgent
+  - type: AgentIDCard
+  - type: UIRequiresLock
+  - type: ActivatableUI
+    key: enum.AgentIDCardUiKey.Key
+    verbText: agent-id-open-ui-verb
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: ChameleonClothing
+    slot: [idcard]
+    default: PassengerIDCard
+    requireTag: WhitelistChameleonIdCard
+  - type: UserInterface
+    interfaces:
+      enum.AgentIDCardUiKey.Key:
+        type: AgentIDCardBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
-  parent: MedicalIDCard
-  id: SeniorPhysicianIDCard
-  name: senior physician ID card
+  parent: AgentIDCard
+  id: NukieAgentIDCard
+  suffix: Nukie
+  components:
+  - type: Access
+    tags:
+    - Maintenance
+    - SyndicateAgent
+    - NuclearOperative
+
+- type: entity
+  parent: [ IDCardStandard, BaseSyndicateContraband ]
+  id: SyndicateIDCard
+  name: syndicate ID card
+>>>>>>> 400905725c (yaml cleanups (id, hypopen, inflatable wall) (#41432))
   components:
   - type: Sprite
     layers:
