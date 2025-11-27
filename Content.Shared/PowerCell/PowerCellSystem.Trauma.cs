@@ -2,12 +2,12 @@
 using Content.Shared.Inventory;
 using Content.Shared.Power.Components;
 
-namespace Content.Shared.Power.EntitySystems;
+namespace Content.Shared.PowerCell;
 
 /// <summary>
-/// Trauma - part of SearchForBattery that uses <see cref="FindBatteryEvent"/>.
+/// Trauma - provide <see cref="FindBattery"/> that uses <see cref="FindBatteryEvent"/>.
 /// </summary>
-public sealed partial class ChargerSystem
+public sealed partial class PowerCellSystem
 {
     [Dependency] private readonly InventorySystem _inventory = default!;
 
@@ -24,7 +24,7 @@ public sealed partial class ChargerSystem
 }
 
 /// <summary>
-/// Raised on an entity in a charger to find a battery to charge.
+/// Raised on an entity to find a battery to charge etc.
 /// It gets raised on the entity itself then, if no battery was found, relayed to equipped items.
 /// </summary>
 /// <remarks>

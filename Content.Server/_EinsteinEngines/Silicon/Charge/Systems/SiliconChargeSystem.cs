@@ -83,7 +83,7 @@ public sealed class SiliconChargeSystem : EntitySystem
 
             // Goobstation - Added batteryEnt parameter
             // If you can't find a battery, set the indicator and skip it.
-            if (!_charger.SearchForBattery(silicon, out var battery))
+            if (!_powerCell.TryGetBatteryFromEntityOrSlot(silicon, out var battery))
             {
                 UpdateChargeState(silicon, 0, siliconComp);
                 if (_alerts.IsShowingAlert(silicon, siliconComp.BatteryAlert))

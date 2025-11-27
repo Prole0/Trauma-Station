@@ -11,7 +11,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Power.EntitySystems;
 
-public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
+public sealed class ChargerSystem : EntitySystem
 {
     [Dependency] private readonly PredictedBatterySystem _battery = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _receiver = default!;
@@ -68,7 +68,7 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
                 // add how much each item is charged it
                 foreach (var contained in container.ContainedEntities)
                 {
-                    if (!SearchForBattery(contained, out var battery))
+                    if (!_powerCell.TryGetBatteryFromEntityOrSlot(contained, out var battery))
                         continue;
 
                     var chargePercentage = _battery.GetCharge(battery.Value.AsNullable()) / battery.Value.Comp.MaxCharge * 100;
@@ -93,7 +93,7 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
             return;
 
         AddComp<InsideChargerComponent>(args.Entity);
-        if (SearchForBattery(args.Entity, out var battery))
+        if (_powerCell.TryGetBatteryFromEntityOrSlot(args.Entity, out var battery))
             _battery.RefreshChargeRate(battery.Value.AsNullable());
         UpdateStatus(ent);
     }
@@ -107,7 +107,7 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
             return;
 
         RemComp<InsideChargerComponent>(args.Entity);
-        if (SearchForBattery(args.Entity, out var battery))
+        if (_powerCell.TryGetBatteryFromEntityOrSlot(args.Entity, out var battery))
             _battery.RefreshChargeRate(battery.Value.AsNullable());
         UpdateStatus(ent);
     }
@@ -187,24 +187,6 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
         UpdateStatus((chargerUid, chargerComp));
     }
 
-    public bool SearchForBattery(EntityUid uid, [NotNullWhen(true)] out Entity<PredictedBatteryComponent>? battery) // Trauma - made public
-    {
-        // try get a battery directly on the inserted entity
-        if (TryComp<PredictedBatteryComponent>(uid, out var batteryComp))
-        {
-            battery = (uid, batteryComp);
-            return true;
-        }
-        // or by checking for a power cell slot on the inserted entity
-        if (_powerCell.TryGetBatteryFromSlot(uid, out battery))
-            return true;
-
-        // <Trauma> - use FindBatteryEvent as fallback
-        battery = FindBattery(uid);
-        return battery != null;
-        // </Trauma>
-    }
-
     private void RefreshAllBatteries(Entity<ChargerComponent> ent)
     {
         // try to get contents of the charger
@@ -213,7 +195,7 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
 
         foreach (var item in container.ContainedEntities)
         {
-            if (SearchForBattery(item, out var battery))
+            if (_powerCell.TryGetBatteryFromEntityOrSlot(item, out var battery))
                 _battery.RefreshChargeRate(battery.Value.AsNullable());
         }
     }
@@ -261,7 +243,7 @@ public sealed partial class ChargerSystem : EntitySystem // Trauma - partial
             return CellChargerStatus.Empty;
 
         // Use the first stored battery for visuals. If someone ever makes a multi-slot charger then this will need to be changed.
-        if (!SearchForBattery(container.ContainedEntities[0], out var battery))
+        if (!_powerCell.TryGetBatteryFromEntityOrSlot(container.ContainedEntities[0], out var battery))
             return CellChargerStatus.Off;
 
         if (_battery.IsFull(battery.Value.AsNullable()))

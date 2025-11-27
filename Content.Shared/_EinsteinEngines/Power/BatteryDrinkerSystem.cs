@@ -32,7 +32,7 @@ public sealed class BatteryDrinkerSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PredictedBatterySystem _battery = default!;
-    [Dependency] private readonly ChargerSystem _charger = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation - Energycrit
 
@@ -54,8 +54,8 @@ public sealed class BatteryDrinkerSystem : EntitySystem
         if (!TryComp<BatteryDrinkerComponent>(args.User, out var drinkerComp) ||
             // Goobstation Start - Energycrit
             _whitelist.IsWhitelistPass(drinkerComp.Blacklist, uid) ||
-            !_charger.SearchForBattery(args.User, out _) ||
-            !_charger.SearchForBattery(uid, out var battery) ||
+            !_powerCell.TryGetBatteryFromEntityOrSlot(args.User, out _) ||
+            !_powerCell.TryGetBatteryFromEntityOrSlot(uid, out var battery) ||
             !HasComp<BatteryDrinkerSourceComponent>(battery.Value)) // can't eat literally any battery
             // Goobstation End - Energycrit
             return;
@@ -105,7 +105,7 @@ public sealed class BatteryDrinkerSystem : EntitySystem
         var sourceBattery = Comp<PredictedBatteryComponent>(source);
 
         var drinker = uid;
-        if (!_charger.SearchForBattery(drinker, out var drinkerBattery))
+        if (!_powerCell.TryGetBatteryFromEntityOrSlot(drinker, out var drinkerBattery))
             return;
 
         var drinkerBatt = drinkerBattery.Value.AsNullable();
