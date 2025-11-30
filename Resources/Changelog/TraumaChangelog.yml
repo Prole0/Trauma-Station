@@ -728,3 +728,45 @@ Entries:
       message: Guns hitting targets a tile after the target
   id: 83
   time: '2025-11-30T05:22:27.0000000+00:00'
+- author: Armok
+  changes:
+    - type: Remove
+      message: Hos magnum
+    - type: Tweak
+      message: EMP implant is stronger
+    - type: Tweak
+      message: Laser rifles stronger, and tweaked for lasersec
+    - type: Tweak
+      message: Shivs hit faster but break after being used for a while.
+    - type: Tweak
+      message: >-
+        Improv spears damage standardized and they break after being used for a
+        while.
+    - type: Remove
+      message: 8 gauge printing
+    - type: Remove
+      message: brass knuckle crafting
+    - type: Remove
+      message: temperature gun and ion rifle printing
+    - type: Tweak
+      message: >-
+        Ammo and guns can only be printed on red alert, with the exception of
+        detective ammo
+    - type: Tweak
+      message: Ion rifle EMPS on hit
+    - type: Tweak
+      message: temp gun cannot be reflected
+    - type: Tweak
+      message: buff hardlight bow EMP effect
+    - type: Add
+      message: laser sec to fland for testing
+    - type: Tweak
+      message: armory safes are much stronger
+    - type: Fix
+      message: broken drop pods bug
+    - type: Tweak
+      message: laser sidearm DPS 13>10, capacity is doubled
+    - type: Tweak
+      message: new laser gun sprites
+  id: 84
+  time: '2025-11-30T05:46:57.0000000+00:00'
