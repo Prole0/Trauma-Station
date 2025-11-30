@@ -708,3 +708,13 @@ Entries:
       message: Fix audio muffle being shitty in some scenarios.
   id: 81
   time: '2025-11-29T18:56:46.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Remove
+      message: Removed slot machine adhd slop.
+    - type: Remove
+      message: Removed wizard chud 2 wizcoin demonic heart.
+    - type: Remove
+      message: No heretic flesh path rework due to shitcode crimes.
+  id: 82
+  time: '2025-11-30T01:37:40.0000000+00:00'
