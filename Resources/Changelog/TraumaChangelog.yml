@@ -790,3 +790,9 @@ Entries:
       message: Flesh heretic path rework.
   id: 86
   time: '2025-11-30T20:04:05.0000000+00:00'
+- author: TurboTrackerss14
+  changes:
+    - type: Fix
+      message: Hivelord brood no longer attack other megafauna.
+  id: 87
+  time: '2025-11-30T22:23:50.0000000+00:00'
