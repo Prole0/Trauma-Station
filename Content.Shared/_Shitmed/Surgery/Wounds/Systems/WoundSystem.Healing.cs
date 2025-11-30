@@ -130,7 +130,7 @@ public partial class WoundSystem
             .Select(x => x.Woundable)
             .ToList();
 
-        float remainingHealAmount = healAmount;
+        float remainingHealAmount = healAmount * sortedWoundables.Count();
         bool anyHealed = false;
 
         // Apply healing to each woundable in order
@@ -417,7 +417,7 @@ public partial class WoundSystem
         if (!Resolve(wound, ref comp))
             return false;
 
-        if (!comp.CanBeHealed)
+        if (!ignoreBlockers && !comp.CanBeHealed)
             return false;
 
         var holdingWoundable = comp.HoldingWoundable;
@@ -507,7 +507,7 @@ public partial class WoundSystem
 
         foreach (var woundable in woundables)
         {
-            if (!TryHealWoundsOnWoundable(woundable.Owner, healingPerPart, out var healed, woundable.Comp))
+            if (!TryHealWoundsOnWoundable(woundable.Owner, healingPerPart, out var healed, woundable.Comp, ignoreBlockers))
                 continue;
 
             healedWounds++;

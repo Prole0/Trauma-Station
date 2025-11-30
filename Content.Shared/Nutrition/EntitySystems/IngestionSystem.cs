@@ -12,6 +12,7 @@ using Content.Shared.DoAfter;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Forensics;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Heretic;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -377,7 +378,14 @@ public sealed partial class IngestionSystem : EntitySystem
         var afterEv = new IngestedEvent(args.User, entity, split, forceFed);
         RaiseLocalEvent(food, ref afterEv);
 
-        _stomach.TryTransferSolution(stomachToUse.Value.Owner, split, stomachToUse);
+        // Goobstation start
+        var volume = split.Volume;
+        if (_stomach.TryTransferSolution(stomachToUse.Value.Owner, split, stomachToUse))
+        {
+            var consumingEv = new ConsumingFoodEvent(food, volume);
+            RaiseLocalEvent(entity, ref consumingEv);
+        }
+        // Goobstation end
 
         if (!afterEv.Destroy)
         {
