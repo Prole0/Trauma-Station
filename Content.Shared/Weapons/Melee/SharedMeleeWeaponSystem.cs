@@ -3,10 +3,12 @@ using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.MartialArts;
 using Content.Goobstation.Common.Weapons;
 using Content.Shared._EinsteinEngines.Contests;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
 using Content.Shared.Item;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Shared.Configuration;
@@ -788,6 +790,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
 
         var appliedDamage = new DamageSpecifier();
+        // <Goob>
+        var seed = SharedRandomExtensions.HashCodeCombine(GetNetEntity(meleeUid).Id, (int) Timing.CurTick.Value);
+        var random = new System.Random(seed);
+        // </Goob>
 
         for (var i = targets.Count - 1; i >= 0; i--)
         {
@@ -807,6 +813,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
             // <Goob>
             modifiedDamage = DamageSpecifier.ApplyModifierSets(modifiedDamage, attackedEvent.ModifiersList);
+            foreach (var type in modifiedDamage.DamageDict.Keys)
+            {
+                if (!modifiedDamage.WoundSeverityMultipliers.TryAdd(type, component.HeavyAttackWoundMultiplier))
+                    modifiedDamage.WoundSeverityMultipliers[type] *= component.HeavyAttackWoundMultiplier;
+            }
             var comboEv = new ComboAttackPerformedEvent(user, entity, meleeUid, ComboAttackType.HarmLight);
             RaiseLocalEvent(user, comboEv);
             // </Goob>

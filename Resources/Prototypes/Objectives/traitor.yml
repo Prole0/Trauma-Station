@@ -120,6 +120,11 @@
       whitelist:
         components:
         - CommandStaff
+    - !type:BodyMindFilter # Trauma - don't pick nukie commander...
+      inverted: true
+      whitelist:
+        components:
+        - NukeOperative
     # Can't have multiple objectives to kill the same person.
     - !type:TargetObjectiveMindFilter
       blacklist:

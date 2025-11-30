@@ -18,8 +18,9 @@
     sprite: _Shitmed/Clothing/OuterClothing/Armor/abductor.rsi
   - type: AbductorVest
   - type: ModifyDelayedKnockdown # Goobstation
-    delayDelta: 3
-    knockdownTimeDelta: -3
+    cancel: true
+  - type: StaminaResistance
+    damageCoefficient: 0.25
   - type: ItemSwitch
     state: stealth
     states:
@@ -131,3 +132,8 @@
         Caustic: 0.4
   - type: ExplosionResistance
     damageCoefficient: 0.75
+  - type: StaminaResistance
+    damageCoefficient: 0.4
+  - type: ModifyDelayedKnockdown
+    delayDelta: 3
+    knockdownTimeDelta: -3

@@ -1,3 +1,4 @@
+using Content.Trauma.Common.Nutrition; // Trauma
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
@@ -392,6 +393,10 @@ public sealed partial class IngestionSystem : EntitySystem
         // Tell the food that it's time to die.
         var finishedEv = new FullyEatenEvent(args.User);
         RaiseLocalEvent(food, ref finishedEv);
+        // <Trauma>
+        var ateEv = new FullyAteEvent(food, args.User);
+        RaiseLocalEvent(entity, ref ateEv);
+        // </Trauma>
 
         var eventArgs = new DestructionEventArgs();
         RaiseLocalEvent(food, eventArgs);
