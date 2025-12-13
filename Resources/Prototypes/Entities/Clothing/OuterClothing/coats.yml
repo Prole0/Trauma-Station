@@ -224,8 +224,9 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.6
-        Heat: 0.7
+        Piercing: 0.55
+        Heat: 0.55
+        Caustic: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ModifyDelayedKnockdown # Goobstation

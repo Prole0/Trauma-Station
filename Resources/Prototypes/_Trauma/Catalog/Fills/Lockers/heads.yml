@@ -48,3 +48,4 @@
   table: !type:AllSelector
     children:
     - id: ClothingBeltSheathHeadOfSecurityFilled
+    - id: ReinforcementCallerHos
