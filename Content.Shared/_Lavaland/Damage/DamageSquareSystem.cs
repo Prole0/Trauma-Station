@@ -109,9 +109,8 @@ public sealed class DamageSquareSystem : EntitySystem
             if (_net.IsServer) // Movement prediction is wonky and doesn't compensate for lag
             {
                 _audio.PlayPvs(field.Comp.Sound, target);
-                _damage.TryChangeDamage(target,
+                _damage.ChangeDamage((target, damageable),
                     field.Comp.Damage,
-                    damageable: damageable,
                     origin: field.Owner,
                     targetPart: TargetBodyPart.All);
             }
