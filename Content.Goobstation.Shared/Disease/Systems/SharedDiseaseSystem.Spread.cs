@@ -73,7 +73,12 @@ public partial class SharedDiseaseSystem
 
         var seed = SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, GetNetEntity(target).Id);
         var rand = new System.Random(seed);
-        if (rand.Prob(Math.Min(power * chance, 1f)))
+        if (!rand.Prob(Math.Min(power * chance, 1f)))
+            return false;
+
+        var infectDisease = disease;
+        EntityUid? newDisease = null;
+        if (clone)
         {
             newDisease = TryClone((disease, diseaseComp));
             if (newDisease == null)

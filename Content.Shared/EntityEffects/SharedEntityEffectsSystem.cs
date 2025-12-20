@@ -29,7 +29,8 @@ public sealed partial class SharedEntityEffectsSystem : EntitySystem, IEntityEff
     {
         var scale = args.ReagentQuantity.Quantity.Float();
 
-        if (args.Reagent.ReactiveEffects != null && entity.Comp.ReactiveGroups != null)
+        if (args.Reagent.ReactiveEffects != null && entity.Comp.ReactiveGroups != null
+            && AllowedToReact(entity)) // Trauma
         {
             foreach (var (key, val) in args.Reagent.ReactiveEffects)
             {
