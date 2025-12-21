@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: BaseHypospray
   id: MedicalHyposprayEmpty
   name: medical hypospray
   suffix: Empty
@@ -21,14 +21,8 @@
         maxVol: 0 # prevent any funnies
   - type: VialHypospray
     slot: vial
-  - type: Injector
-    currentTransferAmount: 5
-    activeModeProtoId: HyposprayInjectMode
-    allowedModes:
-    - HyposprayInjectMode
   - type: UseDelay
     delay: 0.5
-  - type: Appearance
   - type: SolutionContainerVisuals
     insertedItemSlotID: vial # thank you shitcoder that added this
     maxFillLevels: 6
