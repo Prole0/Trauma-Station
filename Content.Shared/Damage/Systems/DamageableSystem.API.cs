@@ -6,7 +6,6 @@ using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Body.Part;
 // </Trauma>
 using System.Linq;
-using System.Net.Sockets;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Goobstation.Maths.FixedPoint;
@@ -128,7 +127,7 @@ public sealed partial class DamageableSystem
         // If you deal 0.0 of some damage type, Empty will be false!
         newDamage = ChangeDamage(ent, damage, ignoreResistances, interruptsDoAfters, origin, ignoreGlobalModifiers,
             canBeCancelled, partMultiplier, targetPart, ignoreBlockers, splitDamage, canMiss); // Shitmed
-        return !damage.Empty;
+        return !newDamage.Empty;
     }
 
     /// <summary>
