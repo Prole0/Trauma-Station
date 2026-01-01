@@ -974,3 +974,9 @@ Entries:
       message: Butchered dionas now drop wood.
   id: 113
   time: '2025-12-31T22:29:53.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Remove
+      message: Removed ERP and herobrine.
+  id: 114
+  time: '2026-01-01T00:19:02.0000000+00:00'
