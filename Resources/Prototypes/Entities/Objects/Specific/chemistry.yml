@@ -618,7 +618,6 @@
       injector:
         maxVol: 100
   - type: Injector
-    delay: 1 # Goobstation - buffing cryo syringe cause its currently pointless and buffing bluespace syringe to make it more useful.
     activeModeProtoId: BluespaceSyringeDrawMode
     allowedModes:
     - BluespaceSyringeInjectMode
@@ -663,13 +662,7 @@
         maxVol: 20 # Goobstation - buffing cryo syringe cause its currently pointless and buffing bluespace syringe to make it more useful.
         canReact: false
   - type: Injector
-    # <Goob> - buffing cryo syringe cause its currently pointless
-    transferAmounts:
-    - 5
-    - 10
-    - 20
     currentTransferAmount: 20
-    # </Goob>
     activeModeProtoId: CryostasisSyringeDrawMode
     allowedModes:
     - CryostasisSyringeInjectMode

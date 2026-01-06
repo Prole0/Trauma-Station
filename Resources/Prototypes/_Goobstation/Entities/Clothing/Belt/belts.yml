@@ -51,7 +51,6 @@
         - MedicalPatch # Goobstation
         - HandheldCrewMonitor # Goobstation
       components:
-        - Hypospray
         - Injector
         - Pill
         - HandLabeler
@@ -161,7 +160,7 @@
         - Ointment
       components:
         - Pill
-        - Hypospray
+        - Injector
         - SyringeGun
         - SurgeryTool
         - Defibrillator

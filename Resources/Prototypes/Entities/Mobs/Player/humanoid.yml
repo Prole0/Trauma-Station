@@ -507,7 +507,6 @@
   - type: Loadout
     prototypes: [ ERTSecurityGearArmedShotgun ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
->>>>>>> abeeb910fb (ERT Overhaul 3/3: Loadouts (#38481))
 
 ## ERT Medic
 

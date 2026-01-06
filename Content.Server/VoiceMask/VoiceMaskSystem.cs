@@ -1,6 +1,7 @@
 // <Trauma>
 using Content.Shared.Chat.RadioIconsEvents;
 using Content.Shared.Roles.Jobs;
+using Content.Server.Speech;
 // </Trauma>
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;

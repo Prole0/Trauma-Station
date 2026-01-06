@@ -949,11 +949,8 @@
   name: uplink-exploding-syndicate-bomb-fake-name
   description: uplink-exploding-syndicate-bomb-fake-desc
   productEntity: SyndicateBombFake
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 1
   cost:
-    Telecrystal: 4
+    Telecrystal: 20 # Trauma - was 4, 5x
   categories:
   - UplinkDeception
   conditions:

@@ -54,10 +54,9 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    neck: ExecutiveIDCard # Goob - was Whistle
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedSec
-    neck: Whistle
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
@@ -143,7 +142,6 @@
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
-    shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHatFez
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
@@ -384,10 +382,9 @@
     back: ClothingBackpackERTSecurity
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    neck: ExecutiveIDCard # Goob - was Whistle
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    neck: SecurityWhistle
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom

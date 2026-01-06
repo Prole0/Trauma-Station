@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseMob, ClothingMaskBase, MobDamageable]
+  parent: [ClothingMaskBase, BaseMob, MobDamageable]
   id: MobXenomorphFaceHugger
   name: xenomorph facehugger
   description: A writhing nightmare. The facehugger clings to its victim's face, forcibly inserting a xenomorph fetus.
@@ -44,9 +44,10 @@
       types:
         Blunt: 0
   - type: Temperature
+    currentTemperature: 310.15
+  - type: TemperatureDamage
     heatDamageThreshold: 360
     coldDamageThreshold: -150
-    currentTemperature: 310.15
   - type: Butcherable
     spawned:
     - id: FoodMeatXeno

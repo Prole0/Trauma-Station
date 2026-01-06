@@ -38,11 +38,12 @@
   transferAmounts:
   - 5
   - 10
+  - 20 # Trauma
 
 - type: injectorMode
   abstract: true
   id: BaseBluespaceSyringeMode
-  mobTime: 2.5
+  mobTime: 1 # Trauma - was 2.5
   delayPerVolume: 0.05
   transferAmounts:
   - 5
