@@ -823,7 +823,7 @@
   description: uplink-chameleon-projector-desc
   productEntity: ChameleonProjector
   cost:
-    Telecrystal: 30 # goob - Basically a meme item at 35 TC to be real.
+    Telecrystal: 15 # Trauma - was 3, 5x
   categories:
   - UplinkDeception
 
