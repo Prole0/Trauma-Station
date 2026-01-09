@@ -1124,3 +1124,11 @@ Entries:
         into mothroaches.
   id: 133
   time: '2026-01-09T10:13:29.0000000+00:00'
+- author: JohnJJohn
+  changes:
+    - type: Tweak
+      message: Changed the lights back to LightTube instead of LED's
+    - type: Tweak
+      message: Changed the plating texture
+  id: 134
+  time: '2026-01-09T15:39:41.0000000+00:00'
