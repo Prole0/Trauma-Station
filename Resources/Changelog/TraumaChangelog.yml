@@ -1116,3 +1116,11 @@ Entries:
       message: Removed stinky nyano mail.
   id: 132
   time: '2026-01-08T16:46:47.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Add
+      message: >-
+        Added mothmaggots which can now burrow into peoples' chests to mature
+        into mothroaches.
+  id: 133
+  time: '2026-01-09T10:13:29.0000000+00:00'
