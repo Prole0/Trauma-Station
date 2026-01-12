@@ -1254,3 +1254,11 @@ Entries:
         their spawnpoints.
   id: 148
   time: '2026-01-12T09:59:41.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Tweak
+      message: >-
+        You can now breathe in softcrit at 30% efficiency. Give people internals
+        to keep them alive longer.
+  id: 149
+  time: '2026-01-12T11:14:42.0000000+00:00'
