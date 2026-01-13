@@ -1328,3 +1328,11 @@ Entries:
       message: Fixed some vending machine snacks being healthy when they shouldn't.
   id: 157
   time: '2026-01-13T09:10:55.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Tweak
+      message: CQC still has ripostee. 🥚
+    - type: Tweak
+      message: Ghost bar still exists. 🥚
+  id: 158
+  time: '2026-01-13T14:24:47.0000000+00:00'
