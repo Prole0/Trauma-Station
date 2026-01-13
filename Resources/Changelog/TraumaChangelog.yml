@@ -1310,3 +1310,11 @@ Entries:
       message: Xenobio now has a freezer and a biomass reclaimer.
   id: 155
   time: '2026-01-13T07:25:57.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Fix
+      message: Fixed some xenobio extracts not doing anything.
+    - type: Fix
+      message: Fixed engiborgs not being able to pick up steel.
+  id: 156
+  time: '2026-01-13T08:16:48.0000000+00:00'
