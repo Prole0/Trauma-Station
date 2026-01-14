@@ -1372,3 +1372,11 @@ Entries:
       message: blob mobs can heal poison, genetic, and radiation damage.
   id: 163
   time: '2026-01-14T00:37:08.0000000+00:00'
+- author: Nousagi37
+  changes:
+    - type: Tweak
+      message: >-
+        Updated Box with localized content, and re-enabled it back in the map
+        pool.
+  id: 164
+  time: '2026-01-14T08:40:37.0000000+00:00'
