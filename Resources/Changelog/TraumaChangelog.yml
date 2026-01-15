@@ -1428,3 +1428,11 @@ Entries:
         used.
   id: 170
   time: '2026-01-15T19:29:59.0000000+00:00'
+- author: Nousagi37
+  changes:
+    - type: Tweak
+      message: >-
+        Updated Marathon with localized content, and re-enabled it back in the
+        map pool.
+  id: 171
+  time: '2026-01-15T19:45:47.0000000+00:00'
