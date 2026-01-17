@@ -1506,3 +1506,9 @@ Entries:
       message: Tinned food and lollypops no longer rot into slop.
   id: 180
   time: '2026-01-16T19:55:09.0000000+00:00'
+- author: TurboTrackerss14
+  changes:
+    - type: Tweak
+      message: Boris Module unlock moved to a tier 2 research.
+  id: 181
+  time: '2026-01-17T09:21:36.0000000+00:00'
