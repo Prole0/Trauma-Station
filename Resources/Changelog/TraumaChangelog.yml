@@ -1534,3 +1534,11 @@ Entries:
       message: Moved the tech tree around to make it look better
   id: 184
   time: '2026-01-18T07:50:43.0000000+00:00'
+- author: catboycorporate
+  changes:
+    - type: Tweak
+      message: 'Banana peels take longer to rot. '
+    - type: Tweak
+      message: There is a heightened chance of (mapped) banana peels being explosive.
+  id: 185
+  time: '2026-01-18T08:45:12.0000000+00:00'
