@@ -1691,3 +1691,9 @@ Entries:
       message: Removed FTL drives.
   id: 205
   time: '2026-01-21T15:36:03.0000000+00:00'
+- author: deltanedas
+  changes:
+    - type: Fix
+      message: Fixed traitor dart guns not having inhand sprites.
+  id: 206
+  time: '2026-01-21T16:05:37.0000000+00:00'
