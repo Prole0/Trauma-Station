@@ -1805,3 +1805,19 @@ Entries:
         freezer cage
   id: 217
   time: '2026-01-22T23:26:45.0000000+00:00'
+- author: Nousagi37
+  changes:
+    - type: Add
+      message: >-
+        Meta, AI restoration console to R&D Office, and the board is added to
+        Tech Vault!
+    - type: Add
+      message: Meta, Armory now has a security turret
+    - type: Remove
+      message: Meta, Extra SecTechFab and Spare robotics console
+    - type: Fix
+      message: Meta, The floating grill and the lattice in Engi has been removed
+    - type: Fix
+      message: Meta, APC in Radio Host now has power
+  id: 218
+  time: '2026-01-22T23:36:56.0000000+00:00'
