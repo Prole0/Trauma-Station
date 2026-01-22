@@ -1741,3 +1741,9 @@ Entries:
       message: Fixed vox raider stealth suit
   id: 211
   time: '2026-01-22T10:51:16.0000000+00:00'
+- author: TurboTrackerss14
+  changes:
+    - type: Fix
+      message: Vox sounds returned to their disgusting goob varients.
+  id: 212
+  time: '2026-01-22T11:11:16.0000000+00:00'
