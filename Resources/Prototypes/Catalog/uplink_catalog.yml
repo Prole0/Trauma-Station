@@ -850,17 +850,6 @@
   - UplinkDeception
 
 - type: listing
-  id: UplinkUltrabrightLantern
-  name: uplink-ultrabright-lantern-name
-  description: uplink-ultrabright-lantern-desc
-  productEntity: LanternFlash
-  cost:
-    Telecrystal: 10 # goob
-  categories:
-  - UplinkDeception
-
-
-- type: listing
   id: UplinkBribe
   name: uplink-bribe-name
   description: uplink-bribe-desc
@@ -883,18 +872,6 @@
 #     Telecrystal: 5
 #   categories:
 #   - UplinkDeception
-
-- type: listing
-  id: UplinkDecoyKit
-  name: uplink-decoy-kit-name
-  description: uplink-decoy-kit-desc
-  icon: { sprite: /Textures/Objects/Tools/Decoys/operative_decoy.rsi, state: folded }
-  productEntity: ClothingBackpackDuffelSyndicateDecoyKitFilled
-  cost:
-    Telecrystal: 20 # goob - total meme item.
-  categories:
-  - UplinkDeception
-
 
 - type: listing
   id: UplinkSyndicateBombFake
@@ -1930,6 +1907,17 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 3
+
+- type: listing
+  id: UplinkDecoyKit
+  name: uplink-decoy-kit-name
+  description: uplink-decoy-kit-desc
+  icon: { sprite: /Textures/Objects/Tools/Decoys/operative_decoy.rsi, state: folded }
+  productEntity: ClothingBackpackDuffelSyndicateDecoyKitFilled
+  cost:
+    Telecrystal: 10 # Trauma - was 1, 5x and a bit more to not be hyper spammable
+  categories:
+  - UplinkPointless
 
 # Job Specific
 
