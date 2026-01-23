@@ -1821,3 +1821,9 @@ Entries:
       message: Meta, APC in Radio Host now has power
   id: 218
   time: '2026-01-22T23:36:56.0000000+00:00'
+- author: Nousagi37
+  changes:
+    - type: Fix
+      message: Meta's Emergency Shuttle now has power
+  id: 219
+  time: '2026-01-23T06:03:59.0000000+00:00'
