@@ -46,3 +46,20 @@ Entries:
   id: 4
   time: '2026-01-23T06:03:59.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/460
+- author: deltanedas
+  changes:
+  - type: Add
+    message: Updated Oasis and added it back to the map pool.
+  - type: Tweak
+    message: Oasis now has a tech vault.
+  - type: Tweak
+    message: >-
+      Oasis now has a good roundstart distro setup, just turn it on and no air
+      problems.
+  - type: Tweak
+    message: >-
+      Oasis tool room now has glass insuls box instead of a protolathe and
+      circuit printer.
+  id: 5
+  time: '2026-01-24T10:29:54.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/474
