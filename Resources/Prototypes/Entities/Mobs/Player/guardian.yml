@@ -6,6 +6,13 @@
   description: guardian
   save: false
   components:
+    # <Trauma>
+    - type: MovementIgnoreGravity
+    - type: ActionGrant
+      actions:
+        - ActionSelfToggleGuardian
+    - type: Targeting
+    # </Trauma>
     - type: LagCompensation
     - type: GhostRole
       allowMovement: true
@@ -114,13 +121,8 @@
     - type: Tag
       tags:
         - CannotSuicide
-    # <Goobstation>
-    - type: MovementIgnoreGravity
-    - type: ActionGrant
-      actions:
-        - ActionSelfToggleGuardian
-    - type: Targeting
-    # </Goobstation>
+        - StunImmune
+        - SlowImmune
 
 # From the uplink injector
 - type: entity
