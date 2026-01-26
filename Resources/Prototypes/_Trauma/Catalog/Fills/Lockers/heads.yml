@@ -10,6 +10,7 @@
     children:
     - id: ClothingHeadsetAltCommand
     - id: CommandMegaphone
+    - id: ReinforcementCallerHoP
 
 - type: entityTable
   id: LockerFillChiefEngineerTrauma

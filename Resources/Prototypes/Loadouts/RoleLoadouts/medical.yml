@@ -14,7 +14,7 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - ChiefMedicalOfficerJobTrinkets
+#  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - ChiefMedicalOfficerEnvirohelm
@@ -36,7 +36,7 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - MedicalDoctorJobTrinkets
+#  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - MedicalDoctorEnvirohelm
@@ -53,7 +53,7 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - MedicalInternJobTrinkets
+#  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - MedicalInternEnvirohelm
@@ -73,7 +73,7 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - ChemistJobTrinkets
+#  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - ChemistEnvirohelm
@@ -94,7 +94,7 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - ParamedicJobTrinkets
+#  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - ParamedicEnvirohelm
