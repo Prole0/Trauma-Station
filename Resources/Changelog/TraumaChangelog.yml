@@ -1949,3 +1949,10 @@ Entries:
   id: 238
   time: '2026-01-25T22:55:21.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/517
+- author: JohnJJohn
+  changes:
+  - type: Tweak
+    message: Facehuggers can now infect if manually put onto someone.
+  id: 239
+  time: '2026-01-26T08:24:59.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/523
