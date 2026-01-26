@@ -1970,3 +1970,12 @@ Entries:
   id: 241
   time: '2026-01-26T11:48:57.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/528
+- author: deltanedas
+  changes:
+  - type: Tweak
+    message: Lighters can be toggled faster.
+  - type: Tweak
+    message: Made PKA sounds much quieter.
+  id: 242
+  time: '2026-01-26T12:01:21.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/529
