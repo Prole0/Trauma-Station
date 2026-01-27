@@ -19,17 +19,22 @@
   - type: ContainerContainer
     containers:
       tankbase: !type:Container
-        showEnts: False
-        occludes: True
-        ents: [ ]
       item: !type:ContainerSlot
-        showEnts: False
-        occludes: True
-        ent: null
       StorageTank: !type:Container
-        showEnts: False
-        occludes: True
-        ents: [ ]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: ItemSlots
     slots:
       item:
@@ -71,4 +76,10 @@
     entityWhitelist:
       components:
       - Slime
-      - Skinnable # only monkeys have it as far as im aware, if not, skin solstice
+      - Skinnable # only monkeys have it as far as im aware, if not, skin john poland
+  - type: UseDelay
+    delays:
+      release:
+        length: 3
+      suction:
+        length: 1
