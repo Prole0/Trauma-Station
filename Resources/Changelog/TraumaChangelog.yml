@@ -2011,3 +2011,14 @@ Entries:
   id: 246
   time: '2026-01-26T20:36:04.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/534
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: >-
+      Fixed slime steroids letting you make infinite slimes, it's capped to 6
+      max now.
+  - type: Tweak
+    message: Capped slime extracts to 8 max.
+  id: 247
+  time: '2026-01-27T09:42:06.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/543
