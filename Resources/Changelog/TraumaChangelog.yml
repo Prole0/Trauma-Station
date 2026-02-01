@@ -2202,3 +2202,10 @@ Entries:
   id: 268
   time: '2026-02-01T11:13:40.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/598
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: Fixed abductors console not working.
+  id: 269
+  time: '2026-02-01T11:53:25.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/600
