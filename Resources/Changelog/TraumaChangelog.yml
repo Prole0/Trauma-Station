@@ -2310,3 +2310,12 @@ Entries:
   id: 282
   time: '2026-02-02T16:21:26.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/628
+- author: Aviu
+  changes:
+  - type: Add
+    message: Reality fractures are visible to everyone now.
+  - type: Fix
+    message: Fix chaplain being able to see reality shifts,
+  id: 283
+  time: '2026-02-03T08:12:12.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/629
