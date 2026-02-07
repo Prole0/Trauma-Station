@@ -2344,3 +2344,10 @@ Entries:
   id: 286
   time: '2026-02-07T06:58:19.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/645
+- author: Kirikii
+  changes:
+  - type: Fix
+    message: Fixed the wizard's mind swap ability.
+  id: 287
+  time: '2026-02-07T14:24:20.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/651
