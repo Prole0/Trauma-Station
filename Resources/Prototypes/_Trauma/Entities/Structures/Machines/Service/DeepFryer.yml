@@ -32,7 +32,7 @@
       flavors:
       - DeepFried
       - oily
-    componentsToRemove: # I love that you have to map the variables even if you're just removing them
+    componentsToRemoveObjects:
     - type: Tool
     - type: RadioSpeaker
     - type: RadioMicrophone
@@ -40,7 +40,6 @@
     - type: AmmoSelector
     - type: Multishot
     - type: GunWieldBonus
-    - type: Perishable
     - type: MeleeWeapon
       damage: {}
     - type: RotInto
@@ -56,6 +55,8 @@
     - type: UserInterface
     - type: HealthAnalyzer
     - type: CablePlacer
+    componentsToRemove:
+    - type: Perishable
   # -----------------
   - type: Electrified
     enabled: false
