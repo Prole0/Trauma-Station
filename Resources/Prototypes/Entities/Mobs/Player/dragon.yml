@@ -1,13 +1,11 @@
 - type: entity
-  parent: [ SimpleSpaceMobBase, FlyingMobBase ]
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, AppearanceDragon ] # Shitmed
   id: BaseMobDragon
   suffix: ""
   name: space dragon
   description: A flying leviathan, loosely related to space carps.
   abstract: true
   components:
-  - type: Body # Shitmed
-    prototype: SpaceDragon
   - type: Bloodstream
     bleedReductionAmount: 5 #goob
     bloodReferenceSolution:

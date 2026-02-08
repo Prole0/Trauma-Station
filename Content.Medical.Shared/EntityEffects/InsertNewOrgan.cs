@@ -34,6 +34,7 @@ public sealed class InsertNewOrganEffectSystem : EntityEffectSystem<BodyPartComp
         {
             Log.Error($"Tried to insert invalid organ {ToPrettyString(organ)} into {ToPrettyString(ent)}!");
             PredictedDel(organ);
+            return;
         }
 
         // this specifically is a programmer error
@@ -41,9 +42,10 @@ public sealed class InsertNewOrganEffectSystem : EntityEffectSystem<BodyPartComp
         {
             Log.Error($"Tried to insert organ {ToPrettyString(organ)} into {ToPrettyString(ent)} which has no {category} slot!");
             PredictedDel(organ);
+            return;
         }
 
-        if (!_part.InsertOrgan(ent, organ))
+        if (!_part.InsertOrgan(ent.AsNullable(), organ))
         {
             Log.Warning($"Failed to insert organ {ToPrettyString(organ)} into {ToPrettyString(ent)}'s {category} slot.");
             PredictedDel(organ);

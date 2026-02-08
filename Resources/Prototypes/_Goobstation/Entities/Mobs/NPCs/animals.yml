@@ -318,7 +318,7 @@
 - type: entity
   name: space carp
   id: MobCarpSentient
-  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat, AppearanceCarp ]
   description: It's a space carp. Used to be a person.
   components:
   - type: InputMover
@@ -397,9 +397,6 @@
     interactFailureString: petting-failure-carp
     interactFailureSound:
       path: /Audio/Effects/bite.ogg
-  - type: Body
-    prototype: Carp
-    bodyType: Simple
   - type: NightVision
     color: "#808080"
     activateSound: null

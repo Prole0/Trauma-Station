@@ -55,10 +55,7 @@
     layers:
     - Hair
     - FacialHair
-    addSlotTime: 2
-    removeSlotTime: 2 # yawn and your hair is gone
-    selectSlotTime: 2
-    changeSlotTime: 2
+    modifyTime: 2 # yawn and your hair is gone
   - type: ActivatableUI
     key: enum.MagicMirrorUiKey.Key
     inHandsOnly: true

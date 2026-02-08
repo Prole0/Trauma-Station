@@ -7,6 +7,8 @@ namespace Content.Medical.Client.ItemSwitch;
 
 public sealed class ItemSwitchSystem : SharedItemSwitchSystem
 {
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -20,8 +22,8 @@ public sealed class ItemSwitchSystem : SharedItemSwitchSystem
     protected override void UpdateVisuals(Entity<ItemSwitchComponent> ent, string key)
     {
         base.UpdateVisuals(ent, key);
-        if (TryComp(ent, out SpriteComponent? sprite) && ent.Comp.States.TryGetValue(key, out var state))
-            if (state.Sprite != null)
-                sprite.LayerSetSprite(0, state.Sprite);
+        if (ent.Comp.States.TryGetValue(key, out var state) &&
+            state.Sprite is {} sprite)
+            _sprite.LayerSetSprite(ent.Owner, 0, sprite);
     }
 }

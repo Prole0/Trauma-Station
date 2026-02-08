@@ -24,7 +24,7 @@ public sealed partial class HumanoidProfileSystem : EntitySystem // Trauma - mad
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        SetBarkVoice(ent, profile.BarkVoice); // Trauma
+        SetBarkVoice((ent, ent.Comp), profile.BarkVoice); // Trauma
         ent.Comp.Gender = profile.Gender;
         ent.Comp.Age = profile.Age;
         ent.Comp.Species = profile.Species;

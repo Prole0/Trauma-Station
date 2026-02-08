@@ -10,7 +10,9 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Shared.UserInterface;
+using Robust.Shared.Audio;
 using Robust.Shared.Spawners;
+using Robust.Shared.Utility;
 using System.Linq;
 
 namespace Content.Medical.Server.Abductor;
@@ -19,6 +21,8 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
 {
     [Dependency] private readonly NumberObjectiveSystem _number = default!;
     [Dependency] private readonly SharedItemSwitchSystem _itemSwitch = default!;
+
+    public static readonly SoundSpecifier ExperimentSound = new SoundPathSpecifier(new ResPath("/Audio/Voice/Human/wilhelm_scream.ogg"));
 
     public void InitializeConsole()
     {
@@ -73,7 +77,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
             {
                 condition.Abducted.Add(GetNetEntity(victim));
             }
-            _audio.PlayPvs("/Audio/Voice/Human/wilhelm_scream.ogg", experimentator);
+            _audio.PlayPvs(ExperimentSound, experimentator);
 
             if (victimComp.Position is {} pos)
                 _xform.SetCoordinates(victim, pos);

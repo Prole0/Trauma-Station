@@ -45,7 +45,6 @@ public sealed partial class WoundSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     [Dependency] private readonly DamageableSystem _damageable = default!;
@@ -54,7 +53,6 @@ public sealed partial class WoundSystem : EntitySystem
 
     // I'm the one.... who throws........
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly TraumaSystem _trauma = default!;
 
     private EntityQuery<WoundComponent> _query;

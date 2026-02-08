@@ -928,7 +928,7 @@
   metamorphicChangeColor: true
   fizziness: 0.3
   metabolisms: # Goobstation - start
-    Drink:
+    Digestion:
       effects:
       - !type:GenericStatusEffect
         key: DemonsBlood
@@ -949,7 +949,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
   metabolisms: # Goobstation - start
-    Drink:
+    Digestion:
       effects:
       - !type:GenericStatusEffect
         key: DemonsKiss

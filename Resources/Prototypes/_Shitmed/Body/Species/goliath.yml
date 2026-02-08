@@ -27,15 +27,10 @@
 
 - type: entity
   abstract: true
-  parent: OrganGoliath
+  # TODO SHITMED: unique sprites
+  parent: [ OrganGoliath, OrganAnimalSpriteExternal ]
   id: OrganGoliathExternal
   components:
-  # TODO SHITMED: unique sprites
-  - type: Sprite
-    sprite: Mobs/Species/Reptilian/parts.rsi
-  - type: VisualOrgan
-    data:
-      sprite: Mobs/Species/Reptilian/parts.rsi
   - type: Woundable
     integrity: 350
     integrityCap: 350

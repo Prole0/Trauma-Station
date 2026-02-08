@@ -1459,7 +1459,6 @@
   - type: Stripping
   - type: Sprite
     drawdepth: Mobs
-    layers:
   - type: Hands
     activeHandId: Hand
     hands:
@@ -1529,8 +1528,6 @@
       - !type:WashCreamPie
   - type: Crawler
   - type: StatusIcon
-
-
 
 - type: entity
   name: monkey

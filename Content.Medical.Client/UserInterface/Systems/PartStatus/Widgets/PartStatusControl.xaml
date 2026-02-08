@@ -18,10 +18,6 @@
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>
             <TextureRect
-                Name="DollGroin"
-                Stretch="KeepAspectCentered"
-                SetSize="64 64"/>
-            <TextureRect
                 Name="DollLeftArm"
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>

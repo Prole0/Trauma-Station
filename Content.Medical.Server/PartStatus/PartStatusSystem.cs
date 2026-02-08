@@ -135,7 +135,7 @@ public sealed class PartStatusSystem : EntitySystem
             partStatusSet.Add(new PartStatus(
                 part.PartType,
                 part.Symmetry,
-                _proto.Index(category).Name,
+                _proto.Index(category).Name.ToLowerInvariant(), // looks better lowercase
                 woundable.Comp.WoundableSeverity,
                 damageSeverities,
                 boneSev,

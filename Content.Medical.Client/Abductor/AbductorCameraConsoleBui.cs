@@ -126,12 +126,4 @@ public sealed class AbductorCameraConsoleBui : BoundUserInterface
         Stations,
         Beacons,
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (disposing)
-            _window?.Dispose();
-    }
 }

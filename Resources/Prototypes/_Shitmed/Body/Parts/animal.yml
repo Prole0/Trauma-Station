@@ -5,10 +5,10 @@
   id: OrganAnimalSpriteExternal
   components:
   - type: Sprite
-    sprite: Mobs/Species/Reptilian/parts.rsi
+    sprite: _Shitmed/Mobs/Species/Animal/parts.rsi
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Reptilian/parts.rsi
+      sprite: _Shitmed/Mobs/Species/Animal/parts.rsi
 
 - type: entity
   abstract: true

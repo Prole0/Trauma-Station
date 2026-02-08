@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 using Content.Medical.Server.Objectives.Components;
-using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 
 namespace Content.Medical.Server.Objectives.Systems;
 
 public sealed class RoleplayObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -16,7 +13,7 @@ public sealed class RoleplayObjectiveSystem : EntitySystem
         SubscribeLocalEvent<RoleplayObjectiveComponent, ObjectiveGetProgressEvent>(OnRoleplayGetProgress);
     }
 
-    private void OnRoleplayGetProgress(EntityUid uid, RoleplayObjectiveComponent comp, ref ObjectiveGetProgressEvent args)
+    private void OnRoleplayGetProgress(Entity<RoleplayObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
     {
         args.Progress = 1f;
     }

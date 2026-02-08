@@ -8,28 +8,28 @@
     },
     "states": [
         {
-            "name": "torso_0"
+            "name": "0"
         },
         {
-            "name": "torso_1"
+            "name": "1"
         },
         {
-            "name": "torso_2"
+            "name": "2"
         },
         {
-            "name": "torso_3"
+            "name": "3"
         },
         {
-            "name": "torso_4"
+            "name": "4"
         },
         {
-            "name": "torso_5"
+            "name": "5"
         },
         {
-            "name": "torso_6"
+            "name": "6"
         },
         {
-            "name": "torso_bleed"
+            "name": "bleed"
         }
     ]
 }

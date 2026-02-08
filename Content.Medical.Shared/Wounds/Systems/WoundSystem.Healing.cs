@@ -29,7 +29,7 @@ public partial class WoundSystem
         // Check if the body has a brain feeling pain
         if (_body.GetBody(woundable) is not {} body ||
             // phantom pain award
-            _consciousness.TryGetNerveSystem(body, out var brain) ||
+            !_consciousness.TryGetNerveSystem(body, out var brain) ||
             brain.Value.Comp.Pain <= FixedPoint2.Zero)
             return;
 
@@ -418,9 +418,13 @@ public partial class WoundSystem
 
     private void GetWounds(WoundableComponent woundable, List<Entity<WoundComponent>> wounds)
     {
-        foreach (var wound in woundable.Wounds.ContainedEntities)
+        if (woundable.Wounds is not {} container)
+            return;
+
+        foreach (var wound in container.ContainedEntities)
         {
-            wounds.Add(wound);
+            if (_query.TryComp(wound, out var comp))
+                wounds.Add((wound, comp));
         }
     }
 

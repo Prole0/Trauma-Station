@@ -12,6 +12,7 @@
   components:
   # <Trauma>
   - type: Targeting
+  - type: BodyStatus
   - type: Carriable
   - type: FootprintOwner
   - type: CPRTraining # IPCs can try CPR i guess?? it won't work

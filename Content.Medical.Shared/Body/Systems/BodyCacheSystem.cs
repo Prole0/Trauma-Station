@@ -59,17 +59,15 @@ public sealed class BodyCacheSystem : CommonBodyCacheSystem
         if (args.Organ.Comp.Category is not {} category)
             return;
 
-        DebugTools.Assert(!HasOrgan(ent.AsNullable(), category), $"Duplicate organ {ToPrettyString(args.Organ)} found in {ToPrettyString(ent)}");
         ent.Comp.Organs[category] = args.Organ;
         Dirty(ent);
     }
 
     private void OnBodyRemovedFrom(Entity<BodyCacheComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (args.Organ.Comp.Category is not {} category)
+        if (TerminatingOrDeleted(ent) || args.Organ.Comp.Category is not {} category)
             return;
 
-        DebugTools.Assert(HasOrgan(ent.AsNullable(), category), $"Organ {ToPrettyString(args.Organ)} removed from {ToPrettyString(ent)} without being in it to begin with?");
         ent.Comp.Organs.Remove(category);
         Dirty(ent);
     }
@@ -124,7 +122,7 @@ public sealed class BodyCacheSystem : CommonBodyCacheSystem
 
     private void OnChildRemoved(Entity<ChildOrganComponent> ent, ref OrganGotRemovedEvent args)
     {
-        if (ent.Comp.Parent is {} part)
+        if (ent.Comp.Parent is {} part && !TerminatingOrDeleted(part))
             _part.OrganRemoved(part, ent.Owner);
 
         ent.Comp.Parent = null;
@@ -134,12 +132,12 @@ public sealed class BodyCacheSystem : CommonBodyCacheSystem
     // so you dont need duplicate events for insert/enable and it auto updates on surgery
     private void OnInserted(Entity<OrganComponent> ent, ref OrganGotInsertedEvent args)
     {
-        _body.EnableOrgan(ent);
+        _body.EnableOrgan(ent.AsNullable());
     }
 
     private void OnRemoved(Entity<OrganComponent> ent, ref OrganGotRemovedEvent args)
     {
-        _body.DisableOrgan(ent);
+        _body.DisableOrgan(ent.AsNullable());
     }
 
     #region Public API
@@ -153,8 +151,8 @@ public sealed class BodyCacheSystem : CommonBodyCacheSystem
     /// <summary>
     /// Get the cached organ for this body and organ category.
     /// </summary>
-    public EntityUid? GetOrgan(Entity<BodyCacheComponent> ent, [ForbidLiteral] ProtoId<OrganCategoryPrototype> category)
-        => ent.Comp.Organs.TryGetValue(category, out var organ)
+    public EntityUid? GetOrgan(Entity<BodyCacheComponent?> ent, [ForbidLiteral] ProtoId<OrganCategoryPrototype> category)
+        => _query.Resolve(ent, ref ent.Comp, false) && ent.Comp.Organs.TryGetValue(category, out var organ)
             ? organ
             : null;
 

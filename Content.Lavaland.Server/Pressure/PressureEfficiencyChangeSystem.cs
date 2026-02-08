@@ -39,7 +39,6 @@ namespace Content.Lavaland.Server.Pressure;
 public sealed class PressureEfficiencyChangeSystem : SharedPressureEfficiencyChangeSystem
 {
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly BodySystem _body = default!;
 
     private EntityQuery<PressureDamageChangeComponent> _query;
     private EntityQuery<ProjectileComponent> _projectileQuery;
@@ -67,7 +66,7 @@ public sealed class PressureEfficiencyChangeSystem : SharedPressureEfficiencyCha
 
     private void OnProjectileShot(Entity<PressureDamageChangeComponent> ent, ref ProjectileShotEvent args)
     {
-        if (!ApplyModifier(ent)
+        if (!ApplyModifier(ent.AsNullable())
             || !ent.Comp.ApplyToProjectiles
             || !_projectileQuery.TryComp(args.FiredProjectile, out var projectile))
             return;

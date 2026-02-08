@@ -1,6 +1,4 @@
 using Content.Medical.Shared.Wounds;
-using Content.Medical.Shared.Wounds;
-using Content.Medical.Shared.Traumas;
 using Content.Medical.Shared.Traumas;
 using Content.Shared.Body;
 using Content.Shared.Damage.Systems;
@@ -11,7 +9,7 @@ namespace Content.Medical.Shared.Body;
 public sealed class BodyRestoreSystem : EntitySystem
 {
     [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
+    //[Dependency] private readonly WoundSystem _wound = default!;
 
     public override void Initialize()
     {
@@ -25,7 +23,7 @@ public sealed class BodyRestoreSystem : EntitySystem
     {
         RestoreBody(ent.AsNullable());
         // not using RelayEvent because it wraps it in BodyRelayedEvent
-        foreach (var organ in _body.GetOrgans(ent))
+        foreach (var organ in _body.GetOrgans(ent.AsNullable()))
         {
             RaiseLocalEvent(organ, args); // TODO: make by ref if it stops being a class
         }
@@ -42,7 +40,7 @@ public sealed class BodyRestoreSystem : EntitySystem
 
         if (Prototype(entity) is not {} proto)
             return;
-        /* TODO NUBODY: fuck
+        /* TODO NUBODY: fuck, make it use InitialBody?
 
         var prototype = Prototypes.Index(body.Prototype.Value);
 

@@ -11,6 +11,8 @@ public abstract class SharedTargetingSystem : EntitySystem
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly BodyPartSystem _part = default!;
 
+    private EntityQuery<TargetingComponent> _query;
+
     /// <summary>
     /// Array of all valid targeting enums.
     /// </summary>
@@ -33,7 +35,10 @@ public abstract class SharedTargetingSystem : EntitySystem
     {
         base.Initialize();
 
+        _query = GetEntityQuery<TargetingComponent>();
+
         SubscribeLocalEvent<TargetingComponent, GetTargetedPartEvent>(OnGetTargetedPart);
+        SubscribeAllEvent<ChangeTargetMessage>(OnChangeTarget);
     }
 
     private void OnGetTargetedPart(Entity<TargetingComponent> ent, ref GetTargetedPartEvent args)
@@ -45,35 +50,14 @@ public abstract class SharedTargetingSystem : EntitySystem
         args.Part = _part.FindBodyPart(args.Target, partType, symmetry)?.Owner;
     }
 
-    /* TODO NUBODY: kill?
-    public static HumanoidVisualLayers ToVisualLayers(TargetBodyPart targetBodyPart)
+    private void OnChangeTarget(ChangeTargetMessage msg, EntitySessionEventArgs args)
     {
-        switch (targetBodyPart)
-        {
-            case TargetBodyPart.Head:
-                return HumanoidVisualLayers.Head;
-            case TargetBodyPart.Chest:
-                return HumanoidVisualLayers.Chest;
-            case TargetBodyPart.Groin:
-                return HumanoidVisualLayers.Groin;
-            case TargetBodyPart.LeftArm:
-                return HumanoidVisualLayers.LArm;
-            case TargetBodyPart.LeftHand:
-                return HumanoidVisualLayers.LHand;
-            case TargetBodyPart.RightArm:
-                return HumanoidVisualLayers.RArm;
-            case TargetBodyPart.RightHand:
-                return HumanoidVisualLayers.RHand;
-            case TargetBodyPart.LeftLeg:
-                return HumanoidVisualLayers.LLeg;
-            case TargetBodyPart.LeftFoot:
-                return HumanoidVisualLayers.LFoot;
-            case TargetBodyPart.RightLeg:
-                return HumanoidVisualLayers.RLeg;
-            case TargetBodyPart.RightFoot:
-                return HumanoidVisualLayers.RFoot;
-            default:
-                return HumanoidVisualLayers.Chest;
-        }
-    }*/
+        if (args.SenderSession.AttachedEntity is not {} user ||
+            !_query.TryComp(user, out var comp) ||
+            comp.Target == msg.BodyPart)
+            return;
+
+        comp.Target = msg.BodyPart;
+        Dirty(user, comp);
+    }
 }

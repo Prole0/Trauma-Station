@@ -193,7 +193,14 @@
     category: Tail
   - type: ChildOrgan
     parentCategory: Torso
+  - type: BodyPart
+    partType: Tail
+    slots: []
   - type: VisualOrgan
     layer: enum.HumanoidVisualLayers.Tail
     data:
       state: tail
+  - type: VisualOrganMarkings
+    markingData:
+      layers:
+      - Tail

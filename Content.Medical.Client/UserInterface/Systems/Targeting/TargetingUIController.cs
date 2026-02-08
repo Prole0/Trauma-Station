@@ -19,10 +19,15 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
     private TargetingComponent? _targetingComponent;
     private TargetingControl? TargetingControl => UIManager.GetActiveUIWidgetOrNull<TargetingControl>();
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        DefaultGameScreen.OnCreateTargeting += CreateTargetingControl;
+    }
+
     public void OnSystemLoaded(TargetingSystem system)
     {
-        DefaultGameScreen.OnCreateTargeting += CreateTargetingControl;
-
         system.TargetingStartup += AddTargetingControl;
         system.TargetingShutdown += RemoveTargetingControl;
         system.TargetChange += CycleTarget;
@@ -30,8 +35,6 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
 
     public void OnSystemUnloaded(TargetingSystem system)
     {
-        DefaultGameScreen.OnCreateTargeting -= CreateTargetingControl;
-
         system.TargetingStartup -= AddTargetingControl;
         system.TargetingShutdown -= RemoveTargetingControl;
         system.TargetChange -= CycleTarget;

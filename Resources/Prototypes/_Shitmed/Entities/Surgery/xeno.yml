@@ -80,6 +80,10 @@
   components:
   - type: Surgery
     requirement: SurgeryXenoExposeEndoskeleton
+    steps:
+    - SurgeryStepXenoOpenIncision
+    - SurgeryStepInsertOrgan
+    - SurgeryStepXenoSealOrganWound
   - type: SurgeryPartCondition
     parts: [ Head ]
   - type: SurgeryOrganCondition
@@ -93,11 +97,6 @@
   id: SurgeryXenoInsertEyes
   name: Insert Xeno Eyes
   components:
-  - type: Surgery
-    steps:
-    - SurgeryStepXenoOpenIncision
-    - SurgeryStepInsertEyes
-    - SurgeryStepXenoSealOrganWound
   - type: SurgeryOrganSlotCondition
     organSlot: Eyes
   - type: SurgeryOrganCondition
@@ -108,11 +107,6 @@
   id: SurgeryXenoInsertLiver
   name: Insert Xeno Liver
   components:
-  - type: Surgery
-    steps:
-    - SurgeryStepXenoOpenIncision
-    - SurgeryStepInsertLiver
-    - SurgeryStepXenoSealOrganWound
   - type: SurgeryPartCondition
     parts: [ Torso ]
   - type: SurgeryOrganSlotCondition
@@ -125,11 +119,6 @@
   id: SurgeryXenoInsertStomach
   name: Insert Xeno Stomach
   components:
-  - type: Surgery
-    steps:
-    - SurgeryStepXenoOpenIncision
-    - SurgeryStepInsertOrgan
-    - SurgeryStepXenoSealOrganWound
   - type: SurgeryPartCondition
     parts: [ Torso ]
   - type: SurgeryOrganSlotCondition
@@ -374,11 +363,10 @@
     - SurgeryStepXenoOpenIncision
     - SurgeryStepXenoNeutralizeAcid
     - SurgeryStepXenoTakeSample
-  - type: SurgeryBodyComponentCondition
-    inverse: false
-    components:
-    - type: Xenomorph
-      caste: Drone # yml major
+  - type: SurgeryBodyComponentCondition # can't take samples from a person
+    whitelist:
+      components:
+      - Xenomorph
   - type: SurgeryPartComponentCondition
     inverse: false
     components:

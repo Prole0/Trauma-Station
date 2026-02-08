@@ -62,7 +62,7 @@ public sealed class IgniteFromGasSystem : EntitySystem
         if (ent.Comp.IgnitableBodyParts.Count == 0)
             RemCompDeferred(ent, ent.Comp);
         else
-            UpdateIgniteImmunity(ent);
+            UpdateIgniteImmunity((ent, ent.Comp));
     }
 
     private void OnIgniteFromGasImmunityEquipped(Entity<IgniteFromGasImmunityComponent> ent, ref GotEquippedEvent args) =>

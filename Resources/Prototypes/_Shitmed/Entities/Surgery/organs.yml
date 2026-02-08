@@ -99,7 +99,7 @@
   - type: SurgeryOrganSlotCondition
     organSlot: Lungs
   - type: SurgeryOrganCondition
-    organ: Lung
+    organ: Lungs
 
 - type: entity
   parent: BaseSurgeryInsertOrgan
@@ -179,7 +179,7 @@
   name: Remove Lungs
   components:
   - type: SurgeryOrganCondition
-    organ: Lung
+    organ: Lungs
 
 - type: entity
   parent: BaseSurgeryRemoveOrganChest

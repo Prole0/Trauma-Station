@@ -93,7 +93,6 @@
 - type: entity
   parent: MobHuman
   id: MobHumanRandom
-  name: Urist McHuman
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -106,7 +105,6 @@
 - type: entity
   parent: MobDiona
   id: MobDionaRandom
-  name: Urist McPlants
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -119,7 +117,6 @@
 - type: entity
   parent: MobGingerbread
   id: MobGingerbreadRandom
-  name: Urist McCookie
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -132,7 +129,6 @@
 - type: entity
   parent: MobMoth
   id: MobMothRandom
-  name: Urist McFluff
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -145,7 +141,6 @@
 - type: entity
   parent: MobDwarf
   id: MobDwarfRandom
-  name: Urist McDwarf
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -158,7 +153,6 @@
 - type: entity
   parent: MobHarpy
   id: MobHarpyRandom
-  name: Urist McHarpy
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -171,7 +165,6 @@
 - type: entity
   parent: MobReptilian
   id: MobReptilianRandom
-  name: Urist McScales
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -182,7 +175,6 @@
 - type: entity
   parent: MobSlimePerson
   id: MobSlimePersonRandom
-  name: Urist McSlime
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -195,7 +187,6 @@
 - type: entity
   parent: MobVox
   id: MobVoxRandom
-  name: Uristiti McVox
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance

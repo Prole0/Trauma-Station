@@ -9,7 +9,7 @@
   - type: Item
     size: Small
   - type: EnterBodyPart
-    part: Torso
+    category: Torso
   - type: TriggerInsideBodyPart
     keyOut: mature
     delay: 40

@@ -7,7 +7,7 @@
     enum.HumanoidVisualLayers.Head:
       limit: 1
       required: true
-      defaultMarkings: [ MobIPCHeadDefault ]
+      default: [ MobIPCHeadDefault ]
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
@@ -17,42 +17,42 @@
     enum.HumanoidVisualLayers.Chest:
       limit: 1
       required: true
-      defaultMarkings: [ MobIPCChestDefault ]
+      default: [ MobIPCChestDefault ]
     enum.HumanoidVisualLayers.HeadSide:
       limit: 1
       required: false
     enum.HumanoidVisualLayers.RLeg:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCRLegDefault ]
+      default: [ MobIPCRLegDefault ]
     enum.HumanoidVisualLayers.RFoot:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCRFootDefault ]
+      default: [ MobIPCRFootDefault ]
     enum.HumanoidVisualLayers.LLeg:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCLLegDefault ]
+      default: [ MobIPCLLegDefault ]
     enum.HumanoidVisualLayers.LFoot:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCLFootDefault ]
+      default: [ MobIPCLFootDefault ]
     enum.HumanoidVisualLayers.RArm:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCRArmDefault ]
+      default: [ MobIPCRArmDefault ]
     enum.HumanoidVisualLayers.RHand:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCRHandDefault ]
+      default: [ MobIPCRHandDefault ]
     enum.HumanoidVisualLayers.LArm:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCLArmDefault ]
+      default: [ MobIPCLArmDefault ]
     enum.HumanoidVisualLayers.LHand:
       limit: 1
       required: false
-      defaultMarkings: [ MobIPCLHandDefault ]
+      default: [ MobIPCLHandDefault ]
 
 ## Mob
 

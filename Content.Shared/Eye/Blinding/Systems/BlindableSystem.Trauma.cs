@@ -14,7 +14,8 @@ public sealed partial class BlindableSystem
     private void UpdateEyeOrganDamage(EntityUid uid, int amount)
     {
         var ev = new EyesDamagedEvent(uid, amount);
-        _body.RelayEvent(uid, ref ev);
+        if (TryComp<BodyComponent>(uid, out var body))
+            _body.RelayEvent((uid, body), ref ev);
     }
 
     // Alternative version of the method intended to be used with Eye Organs, so that you can just pass in

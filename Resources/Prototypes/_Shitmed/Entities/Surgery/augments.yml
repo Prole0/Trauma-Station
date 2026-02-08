@@ -13,9 +13,9 @@
   - type: SurgeryOrganSlotCondition
     inverse: true
   - type: SurgeryBodyComponentCondition
-    components:
-    - type: Silicon # cant open a cavity in clanker, plus they already have battery etc
-    inverse: true
+    blacklist:
+      components:
+      - Silicon # cant open a cavity in clanker, plus they already have battery etc
 
 - type: entity
   abstract: true

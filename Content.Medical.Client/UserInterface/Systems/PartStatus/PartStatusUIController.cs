@@ -3,7 +3,7 @@ using Content.Client.Gameplay;
 using Content.Client.UserInterface.Systems.Alerts.Widgets;
 using Content.Medical.Client.Targeting;
 using Content.Medical.Client.UserInterface.Systems.PartStatus.Widgets;
-using Content.Medical.Common.Targeting;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.PartStatus;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -22,7 +22,7 @@ public sealed class PartStatusUIController : UIController, IOnStateEntered<Gamep
     [Dependency] private readonly IGameTiming _timing = default!;
     private SpriteSystem _sprite = default!;
 
-    private TargetingComponent? _targetingComponent;
+    private BodyStatusComponent? _comp;
     private PartStatusControl? PartStatusControl => UIManager.GetActiveUIWidgetOrNull<PartStatusControl>();
 
     public void OnSystemLoaded(TargetingSystem system)
@@ -58,27 +58,26 @@ public sealed class PartStatusUIController : UIController, IOnStateEntered<Gamep
         if (PartStatusControl is not {} control)
             return;
 
-        control.SetVisible(_targetingComponent != null);
-        if (_targetingComponent is {} comp)
+        control.SetVisible(_comp != null);
+        if (_comp is {} comp)
             control.SetTextures(comp.BodyStatus);
     }
 
     public void RemovePartStatusControl()
     {
-        _targetingComponent = null;
+        _comp = null;
         UpdateVisibility();
     }
 
-    public void UpdatePartStatusControl(TargetingComponent component)
+    public void UpdatePartStatusControl(BodyStatusComponent comp)
     {
-        _targetingComponent = component;
+        _comp = comp;
         UpdateVisibility();
     }
 
     public Texture GetTexture(SpriteSpecifier specifier)
     {
-        if (_sprite == null)
-            _sprite = _entMan.System<SpriteSystem>();
+        _sprite ??= _entMan.System<SpriteSystem>();
 
         return _sprite.Frame0(specifier);
     }
@@ -86,7 +85,7 @@ public sealed class PartStatusUIController : UIController, IOnStateEntered<Gamep
     public void GetPartStatusMessage()
     {
         if (_player.LocalEntity is not {} user
-            || !_entMan.HasComponent<TargetingComponent>(user)
+            || !_entMan.HasComponent<BodyStatusComponent>(user)
             || PartStatusControl == null
             || !_timing.IsFirstTimePredicted)
             return;

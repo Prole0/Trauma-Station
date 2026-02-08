@@ -404,7 +404,7 @@
     sprite: Clothing/OuterClothing/Armor/riot.rsi
   - type: Armor
     coverage: # Shitmed
-    - Shitmed
+    - Torso
     - Arm
     - Leg
     - Tail
@@ -441,7 +441,7 @@
     sprite: Clothing/OuterClothing/Armor/cult_armour.rsi
   - type: Armor
     coverage: # Shitmed
-    - Shitmed
+    - Torso
     - Tail
     - Arm
     - Leg

@@ -72,14 +72,11 @@
   - LeftFootCybernetic
   - RightFootCybernetic
   - BasicCyberneticEyes
-  - BasicCyberneticHeart
   - BasicCyberneticLungs
-  - BasicCyberneticLiver
 
 - type: latheRecipePack
   id: AdvancedCybernetics
   recipes:
-  - UpgradedCyberneticHeart
   - UpgradedCyberneticLungs
   - JawsOfLifeLeftArm
   - JawsOfLifeRightArm

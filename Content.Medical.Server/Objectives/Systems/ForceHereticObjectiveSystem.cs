@@ -4,7 +4,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.Database;
-using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -13,7 +12,6 @@ namespace Content.Medical.Server.Objectives.Systems;
 
 public sealed class ForceHereticObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
 

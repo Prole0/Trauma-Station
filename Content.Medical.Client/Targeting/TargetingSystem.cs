@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 using Content.Shared.Input;
 using Content.Medical.Common.Targeting;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Targeting;
 using Robust.Client.Player;
 using Robust.Shared.Input.Binding;
@@ -15,20 +16,27 @@ public sealed class TargetingSystem : SharedTargetingSystem
     public event Action<TargetingComponent>? TargetingStartup;
     public event Action? TargetingShutdown;
     public event Action<TargetBodyPart>? TargetChange;
-    public event Action<TargetingComponent>? PartStatusStartup;
-    public event Action<TargetingComponent>? PartStatusUpdate;
+    public event Action<BodyStatusComponent>? PartStatusStartup;
+    public event Action<BodyStatusComponent>? PartStatusUpdate;
     public event Action? PartStatusShutdown;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<TargetingComponent, LocalPlayerAttachedEvent>(HandlePlayerAttached);
-        SubscribeLocalEvent<TargetingComponent, LocalPlayerDetachedEvent>(HandlePlayerDetached);
+        SubscribeLocalEvent<TargetingComponent, LocalPlayerAttachedEvent>(OnTargetingAttached);
+        SubscribeLocalEvent<TargetingComponent, LocalPlayerDetachedEvent>(OnTargetingDetached);
         SubscribeLocalEvent<TargetingComponent, ComponentStartup>(OnTargetingStartup);
         SubscribeLocalEvent<TargetingComponent, ComponentShutdown>(OnTargetingShutdown);
-        SubscribeNetworkEvent<TargetIntegrityChangedMessage>(OnTargetIntegrityChanged);
 
+        SubscribeLocalEvent<BodyStatusComponent, LocalPlayerAttachedEvent>(OnStatusAttached);
+        SubscribeLocalEvent<BodyStatusComponent, LocalPlayerDetachedEvent>(OnStatusDetached);
+        SubscribeLocalEvent<BodyStatusComponent, ComponentStartup>(OnStatusStartup);
+        SubscribeLocalEvent<BodyStatusComponent, ComponentShutdown>(OnStatusShutdown);
+
+        SubscribeAllEvent<TargetIntegrityChangedMessage>(OnTargetIntegrityChanged);
+
+        // TODO SHITMED: change this to scrolling "height" and symmetry
         CommandBinds.Builder
         .Bind(ContentKeyFunctions.TargetHead,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Head)))
@@ -55,43 +63,57 @@ public sealed class TargetingSystem : SharedTargetingSystem
         .Register<SharedTargetingSystem>();
     }
 
-    private void HandlePlayerAttached(EntityUid uid, TargetingComponent component, LocalPlayerAttachedEvent args)
+    private void OnTargetingAttached(Entity<TargetingComponent> ent, ref LocalPlayerAttachedEvent args)
     {
-        TargetingStartup?.Invoke(component);
-        PartStatusStartup?.Invoke(component);
+        TargetingStartup?.Invoke(ent.Comp);
     }
 
-    private void HandlePlayerDetached(EntityUid uid, TargetingComponent component, LocalPlayerDetachedEvent args)
+    private void OnStatusAttached(Entity<BodyStatusComponent> ent, ref LocalPlayerAttachedEvent args)
+    {
+        PartStatusStartup?.Invoke(ent.Comp);
+    }
+
+    private void OnTargetingDetached(Entity<TargetingComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         TargetingShutdown?.Invoke();
+    }
+
+    private void OnStatusDetached(Entity<BodyStatusComponent> ent, ref LocalPlayerDetachedEvent args)
+    {
         PartStatusShutdown?.Invoke();
     }
 
-    private void OnTargetingStartup(EntityUid uid, TargetingComponent component, ComponentStartup args)
+    private void OnTargetingStartup(Entity<TargetingComponent> ent, ref ComponentStartup args)
     {
-        if (_player.LocalEntity != uid)
-            return;
-
-        TargetingStartup?.Invoke(component);
-        PartStatusStartup?.Invoke(component);
+        if (_player.LocalEntity == ent.Owner)
+            TargetingStartup?.Invoke(ent.Comp);
     }
 
-    private void OnTargetingShutdown(EntityUid uid, TargetingComponent component, ComponentShutdown args)
+    private void OnTargetingShutdown(Entity<TargetingComponent> ent, ref ComponentShutdown args)
     {
-        if (_player.LocalEntity != uid)
-            return;
+        if (_player.LocalEntity == ent.Owner)
+            TargetingShutdown?.Invoke();
+    }
 
-        TargetingShutdown?.Invoke();
-        PartStatusShutdown?.Invoke();
+    private void OnStatusStartup(Entity<BodyStatusComponent> ent, ref ComponentStartup args)
+    {
+        if (_player.LocalEntity == ent.Owner)
+            PartStatusStartup?.Invoke(ent.Comp);
+    }
+
+    private void OnStatusShutdown(Entity<BodyStatusComponent> ent, ref ComponentShutdown args)
+    {
+        if (_player.LocalEntity == ent.Owner)
+            PartStatusShutdown?.Invoke();
     }
 
     private void OnTargetIntegrityChanged(TargetIntegrityChangedMessage args)
     {
         if (_player.LocalEntity is not {} uid
-            || !TryComp(uid, out TargetingComponent? component))
+            || !TryComp<BodyStatusComponent>(uid, out var comp))
             return;
 
-        PartStatusUpdate?.Invoke(component);
+        PartStatusUpdate?.Invoke(comp);
     }
 
     private void HandleTargetChange(ICommonSession? session, TargetBodyPart target)

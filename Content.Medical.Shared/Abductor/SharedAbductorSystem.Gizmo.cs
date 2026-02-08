@@ -17,8 +17,6 @@ namespace Content.Medical.Shared.Abductor;
 
 public abstract partial class SharedAbductorSystem
 {
-    [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
-    [Dependency] private readonly IGameTiming _time = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] protected readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] protected readonly SharedDoAfterSystem _doAfter = default!;
@@ -97,7 +95,7 @@ public abstract partial class SharedAbductorSystem
 
         ent.Comp.Target = GetNetEntity(target);
         EnsureComp<AbductorVictimComponent>(target, out var victimComponent);
-        victimComponent.LastActivation = _time.CurTime + TimeSpan.FromMinutes(5);
+        victimComponent.LastActivation = Timing.CurTime + TimeSpan.FromMinutes(5);
         victimComponent.Position ??= EnsureComp<TransformComponent>(args.Target.Value).Coordinates;
 
         args.Handled = true;

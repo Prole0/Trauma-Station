@@ -1,3 +1,17 @@
+## Markings
+
+- type: markingsGroup
+  id: Shadowling
+  onlyGroupWhitelisted: true
+  limits:
+    # for abomination markings
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+
 ## Mob
 
 - type: entity

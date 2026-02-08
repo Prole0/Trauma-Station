@@ -1,15 +1,17 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 using Content.Medical.Shared.Abductor;
 using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
-using Content.Shared.Movement.Pulling.Systems;
-using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Actions.Components;
+using Robust.Shared.Utility;
 
 namespace Content.Medical.Server.Abductor;
 
@@ -24,6 +26,8 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     private static readonly EntProtoId TeleportationEffectEntity = "EffectTeleportationEntity";
     private static readonly EntProtoId TeleportationEffectShort = "EffectTeleportationShort";
     private static readonly EntProtoId TeleportationEffectEntityShort = "EffectTeleportationEntityShort";
+
+    public static readonly SoundSpecifier TeleportSound = new SoundPathSpecifier(new ResPath("/Audio/_Shitmed/Misc/alien_teleport.ogg"));
 
     public void InitializeActions()
     {
@@ -52,7 +56,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
         if (comp.SpawnPosition is {} pos)
         {
             var effect = Spawn(TeleportationEffectShort, pos);
-            _audio.PlayPvs("/Audio/_Shitmed/Misc/alien_teleport.ogg", effect);
+            _audio.PlayPvs(TeleportSound, effect);
         }
 
         var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(3), new AbductorReturnDoAfterEvent(), ev.Performer)
@@ -144,6 +148,6 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
         var effect = Spawn(proto, new EntityCoordinates(target, 0, 0));
 
         if (playAudio)
-            _audio.PlayPvs("/Audio/_Shitmed/Misc/alien_teleport.ogg", effect);
+            _audio.PlayPvs(TeleportSound, effect);
     }
 }

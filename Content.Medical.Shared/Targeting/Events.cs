@@ -12,9 +12,3 @@ public sealed class ChangeTargetMessage(TargetBodyPart part): EntityEventArgs
 {
     public readonly TargetBodyPart BodyPart = part;
 }
-
-/// <summary>
-/// Message sent by the server when a body's parts get damaged, to update the part status UI.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class TargetIntegrityChangedMessage: EntityEventArgs;

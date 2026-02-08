@@ -31,7 +31,7 @@ public sealed class FumbleOnAttackSystem : EntitySystem
 
     private void OnAttemptMelee(Entity<HandsComponent> ent, ref AttemptMeleeEvent args)
     {
-        if (_hands.GetActiveHand(ent) is not {} hand)
+        if (_hands.GetActiveHand(ent.AsNullable()) is not {} hand)
             return;
 
         var wielded = _wieldQuery.CompOrNull(args.Weapon)?.Wielded == true;
@@ -57,7 +57,7 @@ public sealed class FumbleOnAttackSystem : EntitySystem
             return;
 
         var wielded = _wieldQuery.CompOrNull(args.Used)?.Wielded == true;
-        var hand = _hands.GetActiveHand(ent);
+        var hand = _hands.GetActiveHand(ent.AsNullable());
         var ev = new AttemptHandsShootEvent();
         foreach (var part in _body.GetOrgans<HandOrganComponent>(ent.Owner))
         {

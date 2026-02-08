@@ -106,7 +106,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
 
         // Alerts
 
-        var showAlerts = state.Unrevivable == true || state.Bleeding.Values.Any(b => b); // Shitmed - check if any limbs bleeding
+        var showAlerts = state.Unrevivable == true || state.Bleeding.Count > 0; // Shitmed - check if any limbs bleeding
 
         AlertsDivider.Visible = showAlerts;
         AlertsContainer.Visible = showAlerts;
@@ -122,7 +122,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
                 MaxWidth = 300
             });
 
-        if (state.Bleeding.Values.Any(x => x))
+        if (state.Bleeding.Count > 0)
             AlertsContainer.AddChild(new RichTextLabel
             {
                 Text = Loc.GetString("health-analyzer-window-entity-bleeding-text"),

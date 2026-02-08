@@ -88,8 +88,11 @@ public sealed partial class BodySystem
     /// <summary>
     /// Non-dogshit version of TryGetOrgansWithComponent
     /// </summary>
-    public List<Entity<T>> GetOrgans<T>(Entity<BodyComponent?> body) where T : Component
+    public List<Entity<T>> GetOrgans<T>(Entity<BodyComponent?> body, bool logMissing = true) where T : Component
     {
+        if (!_bodyQuery.Resolve(body, ref body.Comp, logMissing))
+            return [];
+
         TryGetOrgansWithComponent<T>(body, out var organs);
         return organs;
     }
@@ -97,21 +100,21 @@ public sealed partial class BodySystem
     /// <summary>
     /// Get all organs in a body, both internal and external.
     /// </summary>
-    public List<Entity<OrganComponent>> GetOrgans(Entity<BodyComponent?> body)
-        => GetOrgans<OrganComponent>(body);
+    public List<Entity<OrganComponent>> GetOrgans(Entity<BodyComponent?> body, bool logMissing = true)
+        => GetOrgans<OrganComponent>(body, logMissing);
 
     /// <summary>
     /// Get all internal organs in a body.
     /// </summary>
-    public List<Entity<InternalOrganComponent>> GetInternalOrgans(Entity<BodyComponent?> body)
-        => GetOrgans<InternalOrganComponent>(body);
+    public List<Entity<InternalOrganComponent>> GetInternalOrgans(Entity<BodyComponent?> body, bool logMissing = true)
+        => GetOrgans<InternalOrganComponent>(body, logMissing);
 
     /// <summary>
     /// Get all external organs in a body.
     /// </summary>
-    public List<Entity<OrganComponent>> GetExternalOrgans(Entity<BodyComponent?> body)
+    public List<Entity<OrganComponent>> GetExternalOrgans(Entity<BodyComponent?> body, bool logMissing = true)
     {
-        var organs = GetOrgans(body);
+        var organs = GetOrgans(body, logMissing);
         organs.RemoveAll(organ => HasComp<InternalOrganComponent>(organ));
         return organs;
     }

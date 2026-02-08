@@ -126,7 +126,7 @@ public sealed class AugmentToolPanelSystem : EntitySystem
             return;
 
         // evil malf client trying to pick up arbitrary entities!
-        if (_container.TryGetContainingContainer(tool, out var container) || container.Owner != augment.Owner)
+        if (!_container.TryGetContainingContainer(tool, out var container) || container.Owner != augment.Owner)
         {
             Log.Warning($"{ToPrettyString(body)} tried to pick up {ToPrettyString(tool)} which was not inside {ToPrettyString(augment)}!");
             return;

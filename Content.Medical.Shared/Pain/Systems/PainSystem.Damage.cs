@@ -64,6 +64,7 @@ public partial class PainSystem
         PainDamageTypes? painType = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -81,6 +82,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -101,6 +103,7 @@ public partial class PainSystem
     {
         modifier = null;
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -109,6 +112,7 @@ public partial class PainSystem
 
         modifier = data;
         return true;
+        */
     }
 
     /// <summary>
@@ -132,6 +136,7 @@ public partial class PainSystem
         TimeSpan? time = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -162,6 +167,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -183,6 +189,7 @@ public partial class PainSystem
         TimeSpan? time = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveUid, ref nerve, false))
             return false;
 
@@ -194,6 +201,7 @@ public partial class PainSystem
 
         Dirty(nerveUid, nerve);
         return true;
+        */
     }
 
     /// <summary>
@@ -213,6 +221,7 @@ public partial class PainSystem
     {
         modifier = null;
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveEnt, ref nerve, false))
             return false;
 
@@ -221,6 +230,7 @@ public partial class PainSystem
 
         modifier = data;
         return true;
+        */
     }
 
     /// <summary>
@@ -240,6 +250,7 @@ public partial class PainSystem
         NerveComponent? nerve = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveUid, ref nerve, false))
             return false;
 
@@ -254,6 +265,7 @@ public partial class PainSystem
 
         Dirty(nerveUid, nerve);
         return true;
+        */
     }
 
     /// <summary>
@@ -275,6 +287,7 @@ public partial class PainSystem
         NerveComponent? nerve = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveUid, ref nerve, false))
             return false;
 
@@ -289,6 +302,7 @@ public partial class PainSystem
 
         Dirty(nerveUid, nerve);
         return true;
+        */
     }
 
     /// <summary>
@@ -310,6 +324,7 @@ public partial class PainSystem
         FixedPoint2? change = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveUid, ref nerve, false))
             return false;
 
@@ -324,6 +339,7 @@ public partial class PainSystem
 
         Dirty(nerveUid, nerve);
         return true;
+        */
     }
 
     /// <summary>
@@ -341,6 +357,7 @@ public partial class PainSystem
         NerveComponent? nerve = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(nerveUid, ref nerve, false))
             return false;
 
@@ -350,6 +367,7 @@ public partial class PainSystem
         Dirty(nerveUid, nerve);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -367,6 +385,7 @@ public partial class PainSystem
         NerveSystemComponent? nerveSys = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -380,6 +399,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -400,6 +420,7 @@ public partial class PainSystem
         TimeSpan? time = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -411,8 +432,8 @@ public partial class PainSystem
 
         Dirty(uid, nerveSys);
         return true;
+        */
     }
-
 
     /// <summary>
     /// Changes an existing pain multiplier's data, on a specified nerve system.
@@ -433,6 +454,7 @@ public partial class PainSystem
         NerveSystemComponent? nerveSys = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -447,6 +469,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -468,6 +491,7 @@ public partial class PainSystem
         NerveSystemComponent? nerveSys = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -482,6 +506,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -503,6 +528,7 @@ public partial class PainSystem
         NerveSystemComponent? nerveSys = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -517,6 +543,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     /// <summary>
@@ -529,6 +556,7 @@ public partial class PainSystem
     public bool TryRemovePainMultiplier(EntityUid uid, string identifier, NerveSystemComponent? nerveSys = null)
     {
         return false; // Trauma - pain shitcode
+        /*
         if (!Resolve(uid, ref nerveSys, false))
             return false;
 
@@ -539,6 +567,7 @@ public partial class PainSystem
         Dirty(uid, nerveSys);
 
         return true;
+        */
     }
 
     public Entity<AudioComponent>? PlayPainSoundWithCleanup(EntityUid body,
@@ -651,14 +680,7 @@ public partial class PainSystem
         var ev = new PainFeelsChangedEvent(nerveComp.ParentedNerveSystem, nerveUid, nerveComp.PainFeels);
         RaiseLocalEvent(nerveUid, ref ev);
 
-        if (!TryComp<TargetingComponent>(body, out var targeting))
-            return;
-
-        targeting.BodyStatus = _wound.GetWoundableStatesOnBodyPainFeels(body);
-        Dirty(body, targeting);
-
-        if (_net.IsServer)
-            RaiseNetworkEvent(new TargetIntegrityChangedMessage(), body);
+        _bodyStatus.UpdateStatus(body);
     }
 
     private void UpdateDamage(EntityUid nerveSysEnt, NerveSystemComponent nerveSys)

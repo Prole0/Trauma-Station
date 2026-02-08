@@ -32,11 +32,4 @@ public sealed class AutodocBoundUserInterface : BoundUserInterface
 
         _window.OpenCentered();
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (disposing)
-            _window?.Dispose();
-    }
 }

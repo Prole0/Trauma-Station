@@ -80,7 +80,7 @@
   - type: AutoSurgeon
     entries:
     - targetCategory: ArmRight
-      partComponents:
+      organComponents:
       - type: MantisBladeArm
         actionProto: ActionToggleRightMantisBlade
       - type: Cybernetics # Disable on EMP
@@ -93,7 +93,7 @@
   - type: AutoSurgeon
     entries:
     - targetCategory: ArmLeft
-      partComponents:
+      organComponents:
       - type: MantisBladeArm
         actionProto: ActionToggleLeftMantisBlade
       - type: Cybernetics # Disable on EMP

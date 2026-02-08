@@ -287,7 +287,7 @@ public abstract class SharedItemSwitchSystem : EntitySystem
         Dirty(ent);
 
         if (!ent.Comp.IsPowered && ent.Comp.State != ent.Comp.DefaultState)
-            Switch(ent, ent.Comp.DefaultState);
+            Switch(ent.AsNullable(), ent.Comp.DefaultState);
     }
 
     private void OnMeleeAttack(Entity<ItemSwitchComponent> ent, ref MeleeHitEvent args)

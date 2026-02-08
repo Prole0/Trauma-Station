@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-using Content.Medical.Common.Wounds;
 using Robust.Shared.GameStates;
 
 namespace Content.Medical.Common.Targeting;
@@ -111,26 +110,6 @@ public sealed partial class TargetingComponent : Component
                 { TargetBodyPart.LeftLeg, 0.1f },
             }
         },
-    };
-
-    // TODO SHITMED: FUCKING MOVE THIS OUT. COMBAT TARGETING AND LIMB DAMAGE SHOULD NOT BE LINKED
-    /// <summary>
-    /// What is the current integrity of each body part?
-    /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    public Dictionary<TargetBodyPart, WoundableSeverity> BodyStatus = new()
-    {
-        { TargetBodyPart.Head, WoundableSeverity.Healthy },
-        { TargetBodyPart.Chest, WoundableSeverity.Healthy },
-        { TargetBodyPart.Groin, WoundableSeverity.Healthy },
-        { TargetBodyPart.LeftArm, WoundableSeverity.Healthy },
-        { TargetBodyPart.LeftHand, WoundableSeverity.Healthy },
-        { TargetBodyPart.RightArm, WoundableSeverity.Healthy },
-        { TargetBodyPart.RightHand, WoundableSeverity.Healthy },
-        { TargetBodyPart.LeftLeg, WoundableSeverity.Healthy },
-        { TargetBodyPart.LeftFoot, WoundableSeverity.Healthy },
-        { TargetBodyPart.RightLeg, WoundableSeverity.Healthy },
-        { TargetBodyPart.RightFoot, WoundableSeverity.Healthy },
     };
 
     /// <summary>

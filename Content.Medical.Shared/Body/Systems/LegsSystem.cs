@@ -12,7 +12,7 @@ namespace Content.Medical.Shared.Body;
 // TODO: prevent standing if your bones are broken
 public sealed partial class LegsSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movement;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
 
     private EntityQuery<LegsComponent> _query;
     private EntityQuery<MovementBodyPartComponent> _legQuery;

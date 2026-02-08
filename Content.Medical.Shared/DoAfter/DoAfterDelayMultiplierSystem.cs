@@ -6,7 +6,7 @@ namespace Content.Medical.Shared.DoAfter;
 
 public sealed class DoAfterDelayMultiplierSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body;
+    [Dependency] private readonly BodySystem _body = default!;
 
     public override void Initialize()
     {

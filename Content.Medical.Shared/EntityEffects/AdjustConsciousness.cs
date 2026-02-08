@@ -1,5 +1,4 @@
 using Content.Medical.Shared.Consciousness;
-using Content.Medical.Shared.Consciousness;
 using Content.Medical.Shared.Pain;
 using Content.Shared.Body;
 using Content.Shared.EntityEffects;

@@ -207,11 +207,6 @@
   parent: [ OrganBaseLiver, OrganXenomorphInternal, OrganXenomorphMetabolizer ]
   id: OrganXenomorphLiver
   description: A liver that used to belong to a killer alien, who knows what it used to eat.
-  components:
-  - type: Metabolizer
-    groups:
-    - id: Poison
-      rateModifier: 1
 
 - type: entity
   parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganXenomorphInternal, OrganXenomorphMetabolizer ]

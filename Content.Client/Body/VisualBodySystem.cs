@@ -69,7 +69,7 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
 
     private void ApplyVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, true))
+        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
             return;
 
         _sprite.LayerSetData(target, index, ent.Comp.Data);
@@ -77,7 +77,7 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
 
     private void RemoveVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, true))
+        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
             return;
 
         _sprite.LayerSetRsiState(target, index, RSI.StateId.Invalid);

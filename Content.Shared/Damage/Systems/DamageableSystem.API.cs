@@ -526,7 +526,7 @@ public sealed partial class DamageableSystem
             return;
 
         // <Shitmed> - If entity has a body, set damage on all body parts
-        foreach (var part in _body.GetExternalOrgans(ent.Owner))
+        foreach (var part in _body.GetExternalOrgans(ent.Owner, logMissing: false))
         {
             if (!_damageableQuery.TryComp(part, out var partDamageable))
                 continue;

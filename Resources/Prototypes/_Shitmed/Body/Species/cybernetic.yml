@@ -212,7 +212,7 @@
   - type: Sprite
     layers:
     - state: eyes-medhud
-  - type: Organ
+  - type: OrganComponents
     onAdd:
     - type: ShowHealthBars
       damageContainers:
@@ -235,7 +235,7 @@
   - type: Sprite
     layers:
     - state: eyes-medhud
-  - type: Organ
+  - type: OrganComponents
     onAdd:
     - type: ShowHealthBars
       damageContainers:
@@ -249,77 +249,6 @@
       - SiliconRadiation
     - type: EyeProtection
     # no flash protection
-
-# Heart
-
-# TODO NUBODY: change these to kidneys with metabolism rework, probably
-- type: entity
-  parent: [ OrganBaseHeart, OrganCyberneticInternal, OrganCyberneticMetabolizer ]
-  id: OrganCyberneticHeart
-  name: cybernetic heart
-  description: A precision-tuned heart that slows down medicine absorption while hastening the absorption of poisons and narcotics resulting in weakened effects.
-  components:
-  - type: InternalOrgan
-    intCap: 25
-    integrity: 25
-    integrityThresholds:
-      Normal: 25
-      Damaged: 9
-      Destroyed: 0
-  - type: Metabolizer
-    maxPoisonsProcessable: 2
-    groups: # TODO SHITMED: dont think this actually works
-    - id: Medicine
-      rateModifier: 0.7
-    - id: Poison
-      rateModifier: 1.4
-    - id: Narcotic
-      rateModifier: 1.2
-
-- type: entity
-  parent: OrganCyberneticHeart
-  id: OrganCyberneticHeartUpgraded
-  name: upgraded cybernetic heart
-  description: A next-gen circulatory core that slowly delivers medicine throughout the body providing much better healing while heavily accelerating and weakening toxins and narcotics.
-  components:
-  - type: Sprite
-    layers:
-    - state: heart-u-on
-  - type: InternalOrgan
-    intCap: 32
-    integrity: 32
-    integrityThresholds:
-      Normal: 32
-      Damaged: 9
-      Destroyed: 0
-  - type: Metabolizer
-    groups:
-    - id: Medicine
-      rateModifier: 0.4
-    - id: Poison
-      rateModifier: 2.8
-    - id: Narcotic
-      rateModifier: 1.6
-
-# Liver
-
-- type: entity
-  parent: [ OrganBaseLiver, OrganCyberneticInternal, OrganCyberneticMetabolizer ]
-  id: OrganCyberneticLiver
-  name: cybernetic liver
-  description: A high-efficiency synthetic liver that neutralizes all negative effects of alcohol while preserving the buzz.
-  components:
-  - type: InternalOrgan
-    intCap: 29
-    integrity: 29
-    integrityThresholds:
-      Normal: 29
-      Damaged: 12
-      Destroyed: 0
-  - type: Metabolizer
-    groups:
-    - id: Alcohol
-      rateModifier: 0.1
 
 # Lungs
 

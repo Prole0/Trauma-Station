@@ -103,8 +103,11 @@ public sealed partial class BodyPartSystem
             ? organ
             : null;
 
-    public bool TryAddSlot(Entity<BodyPartComponent> ent, [ForbidLiteral] ProtoId<OrganCategoryPrototype> category)
+    public bool TryAddSlot(Entity<BodyPartComponent?> ent, [ForbidLiteral] ProtoId<OrganCategoryPrototype> category)
     {
+        if (!_query.Resolve(ent, ref ent.Comp))
+            return false;
+
         DebugTools.Assert(_body.GetCategory(ent.Owner) != category,
             $"Tried to add {ToPrettyString(ent)}'s own category {category} to its slots!");
         if (!ent.Comp.Slots.Add(category))
@@ -164,7 +167,7 @@ public sealed partial class BodyPartSystem
             // the part needs a slot
             part.Comp.Slots.Contains(category) &&
             // the slot can't already be occupied
-            part.Comp.Children.ContainsKey(category);
+            !part.Comp.Children.ContainsKey(category);
 
     /// <summary>
     /// Tries to insert an organ into the part's body or, if it is severed, into its organs container.

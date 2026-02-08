@@ -199,9 +199,6 @@
           types:
             Poison:
               0.5
-      # </Goob>
-    Medicine: # EE Plasmeme
-      effects:
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -215,6 +212,7 @@
             Caustic: -0.66
             Asphyxiation: -0.66
             Poison: -0.66
+      # </Goob>
   reactiveEffects:
     Flammable:
       methods: [ Touch ]

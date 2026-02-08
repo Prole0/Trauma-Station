@@ -70,7 +70,7 @@
 # the kojima special
 - type: entity
   parent: [ OrganBaseFootLeft, OrganBioSynthExternal ]
-  id: OrganBioSynthLeftFoot
+  id: OrganBioSynthFootLeft
 
 - type: entity
   parent: [ OrganBaseFootRight, OrganBioSynthExternal ]

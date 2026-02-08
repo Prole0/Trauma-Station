@@ -38,7 +38,7 @@ public sealed class AdjustPainFeelsEffectSystem : EntityEffectSystem<BodyCompone
         var nerves = nerveSys.Value;
         var ident = args.Effect.ModifierIdentifier;
         var amount = args.Effect.Amount * scale;
-        foreach (var bodyPart in _part.GetBodyParts(ent))
+        foreach (var bodyPart in _part.GetBodyParts(ent.AsNullable()))
         {
             // TODO SHITMED: predicted rng
             var add = _random.Prob(0.3f) ? amount : -amount;

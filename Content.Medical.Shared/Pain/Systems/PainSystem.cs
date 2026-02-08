@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 using Content.Medical.Common.CCVar;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Consciousness;
 using Content.Medical.Shared.Pain;
 using Content.Medical.Shared.Traumas;
@@ -31,6 +32,7 @@ public sealed partial class PainSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly BodyStatusSystem _bodyStatus = default!;
 
     [Dependency] private readonly SharedAudioSystem _IHaveNoMouthAndIMustScream = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;

@@ -16,8 +16,9 @@
   - type: SurgeryPartCondition
     parts: [ Head ]
   - type: SurgeryBodyComponentCondition
-    components:
-    - type: XenoCompatible
+    whitelist:
+      components:
+      - XenoCompatible
 
 - type: entity
   parent: BaseSurgeryOpenXenoCavity

@@ -37,6 +37,7 @@ namespace Content.Medical.Shared.Wounds;
 
 public sealed partial class WoundSystem
 {
+    [Dependency] private readonly BodyStatusSystem _bodyStatus = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
 
     private const string WoundContainerId = "Wounds";
@@ -727,14 +728,7 @@ public sealed partial class WoundSystem
         // if wounds amount somehow changes it triggers an enumeration error. owch
         woundableComp.WoundableSeverity = WoundableSeverity.Severed;
 
-        if (TryComp<TargetingComponent>(body, out var targeting))
-        {
-            targeting.BodyStatus = GetWoundableStatesOnBodyPainFeels(body);
-            Dirty(body, targeting);
-
-            if (_net.IsServer)
-                RaiseNetworkEvent(new TargetIntegrityChangedMessage(), body);
-        }
+        _bodyStatus.UpdateStatus(body);
 
         // TODO SHITMED: if predicting this add user to pass to this
         if (_net.IsServer)
@@ -796,8 +790,8 @@ public sealed partial class WoundSystem
     public bool AmputateWoundable(EntityUid parentWoundableEntity, EntityUid woundableEntity, WoundableComponent? woundableComp = null, EntityUid? user = null)
     {
         if (_timing.ApplyingState ||
-            !woundableComp.CanRemove ||
             !Resolve(woundableEntity, ref woundableComp) ||
+            !woundableComp.CanRemove ||
             _body.GetBody(parentWoundableEntity) is not {} body)
             return false;
 
@@ -870,15 +864,7 @@ public sealed partial class WoundSystem
         woundableComp.WoundableSeverity = WoundableSeverity.Severed;
         Dirty(woundableEntity, woundableComp);
 
-        if (TryComp<TargetingComponent>(body, out var targeting))
-        {
-            targeting.BodyStatus = GetWoundableStatesOnBodyPainFeels(body);
-            Dirty(body, targeting);
-
-            // TODO SHITMED: lol predict it
-            if (_net.IsServer)
-                RaiseNetworkEvent(new TargetIntegrityChangedMessage(), body);
-        }
+        _bodyStatus.UpdateStatus(body);
 
         _appearance.SetData(woundableEntity,
             WoundableVisualizerKeys.Wounds,
@@ -923,7 +909,7 @@ public sealed partial class WoundSystem
             if (organComp.OrganSeverity == OrganSeverity.Normal)
             {
                 // TODO: SFX for organs getting not destroyed, but thrown out
-                _part.RemoveOrgan((woundable, part), organ);
+                _part.RemoveOrgan((woundable, part), organ.AsNullable());
                 var direction = _random.NextAngle().ToWorldVec();
                 var dropAngle = _random.NextFloat(0.8f, 1.2f);
                 var worldRotation = _transform.GetWorldRotation(organ).ToVec();
@@ -1104,7 +1090,7 @@ public sealed partial class WoundSystem
         TryHealMostSevereBleedingWoundables(ent, (float) args.Amount, out _, ent.Comp);
     }
 
-    protected void InternalAddWoundableToParent(
+    private void InternalAddWoundableToParent(
         EntityUid parentEntity,
         EntityUid childEntity,
         WoundableComponent parentWoundable,
@@ -1138,7 +1124,7 @@ public sealed partial class WoundSystem
         Dirty(childEntity, childWoundable);
     }
 
-    protected void InternalRemoveWoundableFromParent(
+    private void InternalRemoveWoundableFromParent(
         EntityUid parentEntity,
         EntityUid childEntity,
         WoundableComponent parentWoundable,
@@ -1263,14 +1249,7 @@ public sealed partial class WoundSystem
         if (_body.GetBody(woundable) is not {} body)
             return;
 
-        if (!TryComp<TargetingComponent>(body, out var targeting))
-            return;
-
-        targeting.BodyStatus = GetWoundableStatesOnBodyPainFeels(body);
-        Dirty(body, targeting);
-
-        if (_net.IsServer)
-            RaiseNetworkEvent(new TargetIntegrityChangedMessage(), body);
+        _bodyStatus.UpdateStatus(body);
 
         _appearance.SetData(woundable,
             WoundableVisualizerKeys.Wounds,
@@ -1332,36 +1311,24 @@ public sealed partial class WoundSystem
         }
     }
 
-    public Dictionary<TargetBodyPart, WoundableSeverity> GetWoundableStatesOnBody(EntityUid body)
+    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetWoundableStatesOnBody(EntityUid body)
     {
-        var result = new Dictionary<TargetBodyPart, WoundableSeverity>();
-
-        foreach (var target in SharedTargetingSystem.ValidParts)
-        {
-            result[target] = WoundableSeverity.Severed;
-        }
-
+        var result = SeveredStates();
         foreach (var part in _body.GetOrgans<WoundableComponent>(body))
         {
-            if (_part.GetTargetBodyPart(part) is {} target)
-                result[target] = part.Comp.WoundableSeverity;
+            if (_body.GetCategory(part.Owner) is {} category)
+                result[category] = part.Comp.WoundableSeverity;
         }
 
         return result;
     }
 
-    public Dictionary<TargetBodyPart, WoundableSeverity> GetDamageableStatesOnBody(EntityUid body)
+    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetDamageableStatesOnBody(EntityUid body)
     {
-        var result = new Dictionary<TargetBodyPart, WoundableSeverity>();
-
-        foreach (var part in SharedTargetingSystem.ValidParts)
-        {
-            result[part] = WoundableSeverity.Severed;
-        }
-
+        var result = SeveredStates();
         foreach (var part in _body.GetOrgans<WoundableComponent>(body))
         {
-            if (_part.GetTargetBodyPart(part) is not {} target)
+            if (_body.GetCategory(part.Owner) is not {} category)
                 continue;
 
             if (!TryComp<DamageableComponent>(part, out var damageable))
@@ -1391,24 +1358,19 @@ public sealed partial class WoundSystem
                 break;
             }
 
-            result[target] = nearestSeverity;
+            result[category] = nearestSeverity;
         }
 
         return result;
     }
 
-    public Dictionary<TargetBodyPart, WoundableSeverity> GetWoundableStatesOnBodyPainFeels(EntityUid body)
+    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetWoundableStatesOnBodyPainFeels(EntityUid body)
     {
-        var result = new Dictionary<TargetBodyPart, WoundableSeverity>();
-
-        foreach (var part in SharedTargetingSystem.ValidParts)
-        {
-            result[part] = WoundableSeverity.Severed;
-        }
+        var result = SeveredStates();
 
         foreach (var part in _body.GetOrgans<WoundableComponent>(body))
         {
-            if (_part.GetTargetBodyPart(part) is not {} target ||
+            if (_body.GetCategory(part.Owner) is not {} category ||
                 !TryComp<NerveComponent>(part, out var nerve))
                 continue;
 
@@ -1436,9 +1398,19 @@ public sealed partial class WoundSystem
                 break;
             }
 
-            result[target] = nearestSeverity;
+            result[category] = nearestSeverity;
         }
 
+        return result;
+    }
+
+    private static Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> SeveredStates()
+    {
+        var result = new Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity>();
+        foreach (var part in BodySystem.BodyParts)
+        {
+            result[part] = WoundableSeverity.Severed;
+        }
         return result;
     }
 

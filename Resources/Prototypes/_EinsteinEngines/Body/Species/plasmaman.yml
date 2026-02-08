@@ -3,7 +3,7 @@
 - type: markingsGroup
   parent: Undergarments
   id: Plasmaman
-  onlyWhitelisted: true # Hides the hair and facial hair options
+  onlyGroupWhitelisted: true # Hides the hair and facial hair options
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 0
@@ -66,7 +66,7 @@
       Heart: OrganPlasmamanHeart
       Stomach: OrganPlasmamanStomach
       Liver: OrganPlasmamanLiver
-      Kidney: OrganPlasmamanKidneys
+      Kidneys: OrganPlasmamanKidneys
   - type: HumanoidProfile
     species: Plasmaman
 

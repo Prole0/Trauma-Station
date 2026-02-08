@@ -10,8 +10,6 @@ namespace Content.Medical.Client.Abductor;
 
 public sealed class AbductorConsoleBui : BoundUserInterface
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-
     [ViewVariables]
     private AbductorConsoleWindow? _window;
 
@@ -28,7 +26,14 @@ public sealed class AbductorConsoleBui : BoundUserInterface
     {
 
     }
-    protected override void Open() => UpdateState(State);
+
+    protected override void Open()
+    {
+        base.Open();
+
+        UpdateState(State);
+    }
+
     protected override void UpdateState(BoundUserInterfaceState? state)
     {
         if (state is AbductorConsoleBuiState s)
@@ -212,13 +217,5 @@ public sealed class AbductorConsoleBui : BoundUserInterface
         Teleport,
         Experiment,
         ArmorControl
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (disposing)
-            _window?.Dispose();
     }
 }

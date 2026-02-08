@@ -70,15 +70,6 @@
     state: claw
 
 - type: marking
-  id: MothChestGlow
-  bodyPart: Chest
-  groupWhitelist: [ Moth ]
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/Moth/chest.rsi
-    state: glow
-  shader: unshaded
-
-- type: marking
   id: TorsoIncisionMoth
   bodyPart: Chest
   groupWhitelist: [ Moth ]
@@ -143,15 +134,6 @@
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/head.rsi
     state: claw
-
-- type: marking
-  id: MothHeadGlow
-  bodyPart: Head
-  groupWhitelist: [ Moth ]
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/Moth/head.rsi
-    state: glow
-  shader: unshaded
 
 - type: marking
   id: MothSlashLeft
@@ -466,15 +448,6 @@
     state: beetlehorn2
 
 - type: marking
-  id: MothGlowAntenna
-  bodyPart: HeadTop
-  groupWhitelist: [ Moth ]
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/Moth/headtop.rsi
-    state: glowantenna
-  shader: unshaded
-
-- type: marking
   id: AntennaCockroach
   bodyPart: HeadTop
   groupWhitelist: [ Moth ]
@@ -551,15 +524,6 @@
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/tail.rsi
     state: firefly2
-
-- type: marking
-  id: MothFireflyOverlay
-  bodyPart: Tail
-  groupWhitelist: [ Moth ]
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/Moth/tail.rsi
-    state: firefly1
-  shader: unshaded
 
 - type: marking
   id: MothGlasswing

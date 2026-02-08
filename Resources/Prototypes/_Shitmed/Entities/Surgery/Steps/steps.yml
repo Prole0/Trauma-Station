@@ -322,6 +322,8 @@
   - type: SurgeryStep
     tool:
     - type: BodyPart
+      partType: Other # goida
+      slots: []
     duration: 6
   - type: Sprite
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/manipulation.rsi
@@ -760,7 +762,7 @@
     tool:
     - type: Drill
     addOrganOnAdd:
-      brain:
+      Brain:
       - type: OhioAccent
       - type: RatvarianLanguage
       - type: Clumsy
@@ -785,7 +787,7 @@
     - type: Hemostat
     duration: 4
     removeOrganOnAdd:
-      brain:
+      Brain:
       - type: OhioAccent
       - type: RatvarianLanguage
       - type: Clumsy

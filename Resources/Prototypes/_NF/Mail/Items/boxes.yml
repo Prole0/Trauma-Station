@@ -81,7 +81,7 @@
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:BodyPartsSelector
-        proto: AppearanceSlime
+        proto: AppearanceSlimePerson
 
 - type: entity
   suffix: Vox

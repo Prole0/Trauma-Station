@@ -6,14 +6,14 @@
 - type: entity
   abstract: true
   id: OrganDubiousBase
-  parent: [ OrganBaseHeart, BaseMajorContraband ]
+  parent: [ OrganBaseHeart, OrganHumanMetabolizer, BaseMajorContraband ]
   name: mysterious gland
   description: Suspicious alien gland, replaces the heart.
   components:
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Misc/Dubious/organs.rsi
     layers:
-    - gland
+    - state: health
   - type: AbductorOrgan
 
 - type: entity
@@ -23,7 +23,7 @@
   components:
   - type: Sprite
     layers:
-    - health
+    - state: health
   - type: OrganComponents
     onAdd:
     - type: PassiveDamage
@@ -126,9 +126,9 @@
   - type: OrganComponents
     onAdd:
     - type: XenoArtifact
-    - type: RandomStatusActivation
-      statusEffects:
-        ActivateArtifactEffect: ActivateArtifactEffect
+  - type: RandomOrganEffects
+    effects:
+    - !type:ActivateArtifact
 
 - type: entity
   parent: OrganDubiousBase
@@ -138,11 +138,9 @@
   - type: Sprite
     layers:
     - state: species
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation # TODO SHITMED: refactor this dogshit to be random trigger on the organ, relay to the body
-      statusEffects:
-        ScrambleDnaEffect: ScrambleDnaEffect
+  - type: RandomOrganEffects
+    effects:
+    - !type:ScrambleDna
 
 - type: entity
   parent: OrganDubiousBase
@@ -152,11 +150,9 @@
   - type: Sprite
     layers:
     - state: vent
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        ScrambleLocationEffect: ScrambleLocationEffect
+  - type: RandomOrganEffects
+    effects:
+    - !type:RandomTeleport
 
 - type: entity
   parent: OrganDubiousBase
@@ -166,13 +162,12 @@
   - type: Sprite
     layers:
     - state: spider
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      minActivationTime: 120
-      maxActivationTime: 360
-      statusEffects:
-        SpawnSpiderEggs: SpawnSpiderEggs
+  - type: RandomOrganEffects
+    minActivationTime: 120
+    maxActivationTime: 360
+    effects:
+    - !type:SpawnEntity
+      entity: EggSpiderFertilized
 
 - type: entity
   parent: OrganDubiousBase
@@ -182,13 +177,12 @@
   - type: Sprite
     layers:
     - state: slime
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      minActivationTime: 120
-      maxActivationTime: 360
-      statusEffects:
-        SpawnSlimes: SpawnSlimes
+  - type: RandomOrganEffects
+    minActivationTime: 120
+    maxActivationTime: 360
+    effects:
+    - !type:SpawnFriendly
+      entity: MobAdultSlimesBlueAngry
 
 - type: entity
   parent: OrganDubiousBase
@@ -198,11 +192,10 @@
   - type: Sprite
     layers:
     - state: emp
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        SpawnEmp: SpawnEmp
+  - type: RandomOrganEffects
+    effects:
+    - !type:SpawnAttached
+      entity: AdminInstantEffectEMP7
 
 - type: entity
   parent: OrganDubiousBase
@@ -212,11 +205,10 @@
   - type: Sprite
     layers:
     - state: emp
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        SpawnGravityWell: SpawnGravityWell
+  - type: RandomOrganEffects
+    effects:
+    - !type:SpawnAttached
+      entity: AdminInstantEffectGravityWell
 
 - type: entity
   parent: OrganDubiousBase
@@ -226,11 +218,10 @@
   - type: Sprite
     layers:
     - state: emp
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        SpawnFlash: SpawnFlash
+  - type: RandomOrganEffects
+    effects:
+    - !type:SpawnAttached
+      entity: AdminInstantEffectFlash
 
 - type: entity
   parent: OrganDubiousBase
@@ -240,11 +231,10 @@
   - type: Sprite
     layers:
     - state: emp
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        SpawnSmoke: SpawnSmoke
+  - type: RandomOrganEffects
+    effects:
+    - !type:SpawnAttached
+      entity: AdminInstantEffectSmoke10
 
 - type: entity
   parent: OrganDubiousBase
@@ -254,11 +244,9 @@
   - type: Sprite
     layers:
     - state: viral
-  - type: OrganComponents
-    onAdd:
-    - type: RandomStatusActivation
-      statusEffects:
-        ExpelGas: ExpelGas
+  - type: RandomOrganEffects
+    effects:
+    - !type:ExpelGas
 
 - type: entity
   parent: OrganDubiousBase

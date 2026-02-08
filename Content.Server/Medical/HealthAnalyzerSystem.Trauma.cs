@@ -5,7 +5,6 @@ using Content.Medical.Common.Traumas;
 using Content.Medical.Shared.Wounds;
 using Content.Medical.Shared.Pain;
 using Content.Medical.Shared.Traumas;
-using Content.Medical.Common.Targeting;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
@@ -14,6 +13,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.MedicalScanner;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Prototypes;
 using System.Linq;
 
 namespace Content.Server.Medical;
@@ -88,7 +88,7 @@ public sealed partial class HealthAnalyzerSystem
     private void FetchBodyData(EntityUid target,
         out Dictionary<NetEntity, List<WoundableTraumaData>> traumas,
         out Dictionary<NetEntity, FixedPoint2> pain,
-        out Dictionary<TargetBodyPart, bool> bleeding)
+        out HashSet<ProtoId<OrganCategoryPrototype>> bleeding)
     {
         traumas = new();
         pain = new();
@@ -100,18 +100,18 @@ public sealed partial class HealthAnalyzerSystem
             var ent = GetNetEntity(part);
             traumas.Add(ent, FetchTraumaData(part, part.Comp));
             pain.Add(ent, FetchPainData(part));
-            if (_part.GetTargetBodyPart(part) is {} targetPart)
-                bleeding.Add(targetPart, part.Comp.Bleeds > 0);
+            if (part.Comp.Bleeds > 0 && _body.GetCategory(part.Owner) is {} category)
+                bleeding.Add(category);
         }
     }
 
-    private Dictionary<TargetBodyPart, bool> FetchBleedData(Entity<BodyComponent?> body)
+    private HashSet<ProtoId<OrganCategoryPrototype>> FetchBleedData(Entity<BodyComponent?> body)
     {
-        var bleeding = new Dictionary<TargetBodyPart, bool>();
+        var bleeding = new HashSet<ProtoId<OrganCategoryPrototype>>();
         foreach (var part in _body.GetOrgans<WoundableComponent>(body))
         {
-            if (_part.GetTargetBodyPart(part) is {} targetPart)
-                bleeding.Add(targetPart, part.Comp.Bleeds > 0);
+            if (part.Comp.Bleeds > 0 && _body.GetCategory(part.Owner) is {} category)
+                bleeding.Add(category);
         }
 
         return bleeding;

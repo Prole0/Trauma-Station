@@ -54,7 +54,7 @@ public partial class TraumaSystem
 
         // Getting your organ turned into a blood mush inside you applies a LOT of internal pain, that can get you dead.
         _pain.ChangePainModifier(
-            nerveSys.Value,
+            nerveSys.Value.AsNullable(),
             bodyPart.Owner,
             OrganDamagePainIdentifier,
             (totalIntegrityCap - totalIntegrity) / 2);

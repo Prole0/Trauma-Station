@@ -5,7 +5,7 @@
 
 # TODO: if someone ever makes a photocopier port ass.dmi or whatever and give every species a unique one
 - type: entity
-  parent: [ OrganBaseExternal, ClothingHeadBase ]
+  parent: [ OrganBase, ClothingHeadBase ]
   id: Butt
   name: butt
   components:
