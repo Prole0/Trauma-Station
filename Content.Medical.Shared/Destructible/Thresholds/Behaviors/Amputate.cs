@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 using Content.Medical.Shared.Wounds;
-using Content.Medical.Shared.Wounds;
 using Content.Shared.Destructible;
 using Content.Shared.Destructible.Thresholds.Behaviors;
 
-namespace Content.Trauma.Shared.Destructible.Thresholds.Behaviors;
+namespace Content.Medical.Shared.Destructible.Thresholds.Behaviors;
 
 // TODO: kill when entity conditions are used for destruction
 [Serializable]
