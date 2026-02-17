@@ -250,6 +250,7 @@ public sealed partial class MutationSystem : EntitySystem
         }
         data.Scramble(_random, number);
         RoundData[id.Value] = data;
+        MutationNumbers.Add(number);
         return data;
     }
 
